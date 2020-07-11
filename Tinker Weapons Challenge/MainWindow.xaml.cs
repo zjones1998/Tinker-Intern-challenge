@@ -20,9 +20,16 @@ namespace Tinker_Weapons_Challenge
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private static int count;
 		public MainWindow()
 		{
 			InitializeComponent();
+		}
+
+		private void CountButton_Click(object sender, RoutedEventArgs e)
+		{
+			count++;
+			countBlock.Text = count.ToString();
 		}
 	}
 }

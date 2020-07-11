@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tinker_Weapons_Challenge"
         mc:Ignorable="d"
+        WindowState="Maximized"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TextBlock x:Name="countBlock" HorizontalAlignment="Center" Margin="466,170,319,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+        <Button x:Name="countButton" Content="Press to count" Click="CountButton_Click" HorizontalAlignment="Center" Margin="430,234,276,0" VerticalAlignment="Top" Width="86"/>
+
     </Grid>
 </Window>
