@@ -1,0 +1,62 @@
+//in miles
+int distance;
+
+//in pounds
+float fuelNeed;
+float loadedWeight;
+float freeWeight;
+int weaponWeight = 0;
+
+float distPercent;
+bool continue = true
+
+get Plane; //The application will let the user select the B-52 to begin working
+get distance;
+if distance > B52.maxRange
+	display "Distance needed is greater than plane's max range. Plane will need refueling before returning to base.";
+
+distPercent = distance / B52.maxRange;
+fuelNeed = B52.fuelMax * distPercent;
+
+if (fuelneed > B52.fuelMin)
+	loadedWeight = B52.baseWeight + fuelNeed;
+
+else
+	loadedWeight = B52.baseWeight + B52.fuelMin;
+
+freeWeight = B52.maxWeight - loadedWeight;
+
+Display "The plane currently weighs" loadedWeight. "It can carry an additional " freeWeight;
+
+
+while (continue)
+The application will now let the user load the weapons, checking the weight and whether the weapon is valid for the location.
+	if Bay == MALD || WCMD
+		if Bay == MALD
+			display "Bay cannot hold MALD. "
+		else
+			display "Bay cannot hold WCMD. "
+		Bay = 0;
+	weaponweight = rWingWeight + bayWeight + lWingWeight;
+	freeWeight = freeweight - chosen;
+	display "The plane is currently loaded with " weaponWeight "pounds. "The Right Wing has " rWing ". The Left Wing has " B52.lWing ". The bay has " B52.bay ".";
+	display "The remaining weight is: " freeWeight;
+	display "Would you like to continue?";
+	get continue;
+
+
+
+Class: Plane
+	Name - B52
+	Base Weight - 185000
+	Max Weight - 485000
+	Fuel Minimum - 100000
+	Fuel Maximum - 300000
+	Range - 4825
+	Right Wing
+	Left Wing
+	Bay
+
+Class: Weapon
+	Name: Gravity, JASSM, JDAM, MALD, WCMD, CALCM, ALCM
+	Weight: 7988, 24946, 9722, 7626, 1632, 30194, 30194
