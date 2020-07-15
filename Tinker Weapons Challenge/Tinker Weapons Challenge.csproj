@@ -55,12 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\AirCraft.cs" />
+    <Compile Include="Model\Weapons.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="Weapons.cs" />
-    <Page Include="buildWindow.xaml">
+    <Page Include="View\buildWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -68,10 +71,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="buildWindow.xaml.cs">
+    <Compile Include="View\buildWindow.xaml.cs">
       <DependentUpon>buildWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -103,17 +106,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\ALCM-CALCM.png" />
-    <Resource Include="images\B-52 Top.png" />
-    <Resource Include="images\b52.jpg" />
-    <Resource Include="images\Gravity.png" />
-    <Resource Include="images\JASSM.png" />
-    <Resource Include="images\JDAM.png" />
-    <Resource Include="images\MALD.png" />
-    <Resource Include="images\WCMD.png" />
+    <Resource Include="View\images\ALCM-CALCM.png" />
+    <Resource Include="View\images\B-52 Top.png" />
+    <Resource Include="View\images\b52.jpg" />
+    <Resource Include="View\images\Gravity.png" />
+    <Resource Include="View\images\JASSM.png" />
+    <Resource Include="View\images\JDAM.png" />
+    <Resource Include="View\images\MALD.png" />
+    <Resource Include="View\images\WCMD.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\b52Boxes.png" />
+    <Resource Include="View\images\b52Boxes.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

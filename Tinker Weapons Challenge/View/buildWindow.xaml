@@ -18,7 +18,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="722,603,0,0" TextWrapping="Wrap" Text="Total Weight:" VerticalAlignment="Top"/>
         <TextBlock x:Name="totalWeightBox" HorizontalAlignment="Left" Margin="804,603,0,0" TextWrapping="Wrap" Text="0" Width="86" VerticalAlignment="Top"/>
         <Button Content="Confirm Fuel changes" Click="fuelConfirm" HorizontalAlignment="Left" Margin="724,575,0,0" Width="166" Height="23" VerticalAlignment="Top"/>
-        <Image x:Name="WCMD" Source="images\WCMD.png" AllowDrop="True" Margin="10,21,904,688" />
+        <Image x:Name="WCMD" Source="View\images\WCMD.png" AllowDrop="True" Margin="10,21,904,688" />
         <Image x:Name="gravity" Source="images\Gravity.png" Margin="0,141,889,544" RenderTransformOrigin="0.557,0.701" AllowDrop="True" />
         <Image x:Name="JASSM" Source="images\JASSM.png" Margin="10,283,879,422" RenderTransformOrigin="0.733,1.257"  AllowDrop="True" ></Image>
         <Image x:Name="JDAM" Source="images\JDAM.png" Margin="0,398,889,308"  AllowDrop="True" ></Image>
@@ -35,7 +35,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="0,497,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Text="JDAM"/><LineBreak/><Run/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="3,626,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"><Run Text="MALD"/><LineBreak/><Run/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="3,724,0,0" TextWrapping="Wrap" Text="ALCM-CALCM" VerticalAlignment="Top" Width="108"/>
-        <Image Source="images\b52Boxes.png" HorizontalAlignment="Left" Height="472" Margin="254,10,0,0" VerticalAlignment="Top" Width="456"/>
+        <Image Source="images\b52Boxes.png" HorizontalAlignment="Left" Height="550" Margin="317,3,0,0" VerticalAlignment="Top" Width="800"/>
         <TextBlock HorizontalAlignment="Left" Margin="151,487,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="13" Width="65"><Run FontWeight="Bold" Text="Load To:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="254,487,0,0" TextWrapping="Wrap" Text="Weapon(s)" VerticalAlignment="Top" Height="13" Width="77"/>
         <TextBlock HorizontalAlignment="Left" Margin="149,516,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67"><Run FontWeight="Bold" Text="Left Wing:"/></TextBlock>
