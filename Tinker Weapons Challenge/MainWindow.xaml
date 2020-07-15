@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:Tinker_Weapons_Challenge"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock x:Name="countBlock" HorizontalAlignment="Center" Margin="466,170,319,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <Button x:Name="countButton" Content="Press to count" Click="CountButton_Click" HorizontalAlignment="Center" Margin="430,234,276,0" VerticalAlignment="Top" Width="86"/>
-
+        Title="MainWindow" Height="995.339" Width="1621.136">
+    <Grid Margin="0,0,2,-21">
+        <Image Source="images\b52.jpg" Width="1000" Height="798" Margin="298,-30,313,217" HorizontalAlignment="Center" VerticalAlignment="Center" StretchDirection="UpOnly"></Image>
+        <Button Content="Ready to design?" Click="buttonToDesignWindow" FontFamily="Arial" HorizontalAlignment="Left" Margin="814,938,0,29" VerticalAlignment="Center" Width="224" RenderTransformOrigin="0.373,0.5"/>
+        <TextBlock HorizontalAlignment="Left" Margin="590,815,0,0" TextWrapping="Wrap" Text="Design and implement weapons systems and combinations for the B-52 Stratofortress!" VerticalAlignment="Top" Width="622" Height="38" FontSize="16"/>
     </Grid>
 </Window>

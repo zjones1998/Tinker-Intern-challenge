@@ -55,6 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Weapons.cs" />
+    <Page Include="buildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +67,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="buildWindow.xaml.cs">
+      <DependentUpon>buildWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -93,6 +101,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ALCM-CALCM.png" />
+    <Resource Include="images\B-52 Top.png" />
+    <Resource Include="images\b52.jpg" />
+    <Resource Include="images\Gravity.png" />
+    <Resource Include="images\JASSM.png" />
+    <Resource Include="images\JDAM.png" />
+    <Resource Include="images\MALD.png" />
+    <Resource Include="images\WCMD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\b52Boxes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
