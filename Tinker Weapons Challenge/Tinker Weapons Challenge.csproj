@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Configuration\PlaneList.cs" />
+    <Compile Include="Configuration\WeaponsList.cs" />
+    <Compile Include="Plane.cs" />
     <Compile Include="Weapons.cs" />
     <Page Include="buildWindow.xaml">
       <SubType>Designer</SubType>
@@ -115,5 +118,6 @@
   <ItemGroup>
     <Resource Include="images\b52Boxes.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
