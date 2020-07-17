@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 
 namespace Tinker_Weapons_Challenge
 {
-
 	/// <summary>
 	/// Interaction logic for buildWindow.xaml
 	/// </summary>
@@ -41,7 +40,7 @@ namespace Tinker_Weapons_Challenge
 			
 
 			fuelWeights = new string[] {"0", "100,000", "150,000", "200,000" };
-			weapons = new string[] { "None", "Gravity", "JASSM", "JDAM", "MALD", "ALCM-CALCM" };
+			weapons = new string[] { "None", "Gravity", "JASSM", "JDAM", "MALD", "ALCM-CALCM", "WCMD" };
 
 			foreach(string w in weapons)
 			{
@@ -49,8 +48,7 @@ namespace Tinker_Weapons_Challenge
 				rightWingCombo.Items.Add(w);
 				bayCombo.Items.Add(w);
 			}
-				
-
+			
 			DataContext = this;
 		}
 
@@ -81,8 +79,6 @@ namespace Tinker_Weapons_Challenge
 				else
 					clearedOrNoGo.Text = "Cleared for takeoff!";
 			}
-			
-
 		}
 
 		private void ResetButton_Click(object sender, RoutedEventArgs e)
@@ -107,11 +103,6 @@ namespace Tinker_Weapons_Challenge
 			int bayWeight = 0;
 			MessageBoxResult result = new MessageBoxResult();
 			int nullWeight = int.Parse("0", NumberStyles.AllowThousands, new CultureInfo("en-au"));
-
-			if (bayCombo.Text == "MALD" || bayCombo.Text == "WCMD")
-			{
-				errorBay.Text = $"Error, {bayCombo.Text} cannot be loaded in the bay.";
-			}
 
 			if(leftWingCombo.Text == "Gravity")
 				leftWing = GRAVITYWeight; 
@@ -155,21 +146,20 @@ namespace Tinker_Weapons_Challenge
 				bayWeight = JDAMWeight;
 			//-----------------------------------------------------
 			if (leftWingCombo.Text == "WCDM")
-				leftWing = JDAMWeight;
+				leftWing = WCMDWeight;
 
 			if (rightWingCombo.Text == "WCDM")
-				rightWing = JDAMWeight;
+				rightWing = WCMDWeight;
 
-			if (bayCombo.Text == "WCDM")
+			if (bayCombo.Text == "WCMD")
 			{
 				result = MessageBox.Show("Error, cannot be loaded into bay", "Confirmation");
-				
 				rightWing = 0;
 				leftWing = 0;
 				totalWeaponWeight.Text = nullWeight.ToString();
 			}
 			//-----------------------------------------------------
-			if (leftWingCombo.Text == "ALCM-CALCM")
+			if (leftWingCombo.Text == "ALCM-CALCM")	
 				leftWing = ALCMWeight;
 
 			if (rightWingCombo.Text == "ALCM-CALCM")
@@ -190,5 +180,32 @@ namespace Tinker_Weapons_Challenge
 			WeaponWeight = rightWing + leftWing + bayWeight;
 			totalWeaponWeight.Text = String.Format("{0:n0}", WeaponWeight);
 		}
+
+		private void Weapon_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+		{
+			DragDrop.DoDragDrop((DependencyObject)sender, ((Image)sender).Source, DragDropEffects.Copy);
+		}
+
+		private void Img_Drop(object sender, DragEventArgs e)
+		{
+			foreach(var format in e.Data.GetFormats())
+			{
+				ImageSource imageSource = e.Data.GetData(format) as ImageSource;
+				if(imageSource != null)
+				{
+					Image img = new Image();
+					img.Height = 100;
+					img.Source = imageSource;
+					((Canvas)sender).Children.Add(img);
+					Canvas.SetTop(img, 0);
+					Canvas.SetLeft(img, 0);
+				}
+			}
+			
+		}
+
+
+
+
 	}
 }
