@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="B52.cs" />
+    <Compile Include="Fuel.cs" />
+    <Compile Include="Plane.cs" />
     <Compile Include="Weapons.cs" />
     <Page Include="buildWindow.xaml">
       <SubType>Designer</SubType>

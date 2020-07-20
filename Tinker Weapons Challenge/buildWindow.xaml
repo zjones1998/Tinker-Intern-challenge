@@ -9,7 +9,7 @@
         WindowState="Maximized"
         AllowDrop="True"
         Height="800" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center" Topmost="True" WindowStartupLocation="CenterScreen">
-    <Grid Height="799" VerticalAlignment="Top" Margin="0,0,0,-2" Width="1000">
+    <Grid Height="790" VerticalAlignment="Top" Margin="0,0,2,-21">
         <TextBlock HorizontalAlignment="Left" Margin="724,524,0,0" TextWrapping="Wrap" Text="Fuel, lbs:" Width="48" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="794,524,0,0" TextWrapping="Wrap" Height="19" Width="41" VerticalAlignment="Top"><Run Text="150,000"/><LineBreak/><Run/></TextBlock>
         <TextBlock x:Name="fuelAddTextBlock" HorizontalAlignment="Left" Margin="722,548,0,0" TextWrapping="Wrap" Text="Add Fuel, lbs" Height="22" Width="72" VerticalAlignment="Top"/>

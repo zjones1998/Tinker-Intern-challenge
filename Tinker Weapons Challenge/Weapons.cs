@@ -6,8 +6,23 @@ using System.Threading.Tasks;
 
 namespace Tinker_Weapons_Challenge
 {
-	class Weapons
+	public class Weapons
 	{
+		public string Weaponname { get; set; }
+		public int Weight { get; set; }
+
+		public Weapons(string weaponname, int weight)
+		{
+			Weaponname = weaponname;
+			Weight = weight;
+		}
+
+		public Weapons()
+		{
+			Weaponname = "DEFAULT_Weaponname";
+			Weight = 0;
+		}
+
 
 	}
 }
