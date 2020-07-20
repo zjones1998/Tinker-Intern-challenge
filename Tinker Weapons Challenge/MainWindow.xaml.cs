@@ -16,10 +16,22 @@ namespace Tinker_Weapons_Challenge
 
 		}
 
-		private void buttonToDesignWindow(object sender, RoutedEventArgs e)
+		private void ExitButton(object sender, RoutedEventArgs e)
 		{
-			buildWindow bw = new buildWindow();
+			this.Close();
+		}
+
+		private void ButtonToB52DesignWindow(object sender, RoutedEventArgs e)
+		{
+			B52buildWindow bw = new B52buildWindow();
 			bw.Show();
+			this.Close();
+		}
+
+		private void B2Design(object sender, RoutedEventArgs e)
+		{
+			B2buildWindow b2bw = new B2buildWindow();
+			b2bw.Show();
 			this.Close();
 		}
 	}

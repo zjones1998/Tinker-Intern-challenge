@@ -55,12 +55,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="B2buildWindow.xaml.cs">
+      <DependentUpon>B2buildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ComboBoxChoices.cs" />
     <Compile Include="Fuel.cs" />
     <Compile Include="Configuration\PlaneList.cs" />
     <Compile Include="Configuration\WeaponsList.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="Weapons.cs" />
-    <Page Include="buildWindow.xaml">
+    <Page Include="B2buildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="B52buildWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -72,8 +80,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="buildWindow.xaml.cs">
-      <DependentUpon>buildWindow.xaml</DependentUpon>
+    <Compile Include="B52buildWindow.xaml.cs">
+      <DependentUpon>B52buildWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -119,6 +127,11 @@
   <ItemGroup>
     <Resource Include="images\b52Boxes.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\toyStory.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\b2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

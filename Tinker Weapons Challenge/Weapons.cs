@@ -24,6 +24,14 @@ namespace Tinker_Weapons_Challenge
 			Weight = 0;
         }
 
-			
+		public int getWeight()
+		{
+			return Weight;
+		}
+
+		public string getName()
+		{
+			return Weaponname;
+		}
 	}
 }

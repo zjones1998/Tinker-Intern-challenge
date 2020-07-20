@@ -1,0 +1,77 @@
+﻿<Window x:Class="Tinker_Weapons_Challenge.B52buildWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tinker_Weapons_Challenge"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        AllowDrop="True"
+        Title="B52buildWindow" Height="800" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center" Topmost="True" WindowStartupLocation="CenterScreen">
+    <Grid Height="1099" VerticalAlignment="Top" Margin="0,0,-361,-330" HorizontalAlignment="Left" Width="1353">
+        <TextBlock HorizontalAlignment="Left" Margin="1720,539,-407,0" TextWrapping="Wrap" Height="18" Width="40" VerticalAlignment="Top"><Run Text="150,000"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="fuelAddTextBlock" HorizontalAlignment="Left" Margin="1642,536,-361,0" TextWrapping="Wrap" Text="Add Fuel, lbs" Height="22" Width="72" VerticalAlignment="Top"/>
+        <ComboBox x:Name="fuelCombo" HorizontalAlignment="Left" Margin="1720,536,-463,0" Width="96" ItemsSource="{Binding fuelWeights}" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="1642,501,-355,0" TextWrapping="Wrap" Text="B-52 Weight" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1714,501,-403,0" TextWrapping="Wrap" Text="185,000" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1642,591,-365,0" TextWrapping="Wrap" Text="Total Weight:" VerticalAlignment="Top" Width="76"/>
+        <TextBlock x:Name="totalWeightBox" HorizontalAlignment="Left" Margin="1730,591,-463,0" TextWrapping="Wrap" Text="0" Width="86" VerticalAlignment="Top"/>
+        <Button Content="Confirm Fuel changes" Click="fuelConfirm" HorizontalAlignment="Left" Margin="1642,563,-463,0" Width="174" Height="24" VerticalAlignment="Top"/>
+        <TextBox x:Name="Distance" HorizontalAlignment="Left" Height="22" Margin="1636,421,-403,0" TextWrapping="Wrap" Text="Enter Distance" VerticalAlignment="Top" Width="120" GotFocus="Distance_GotFocus"/>
+        <Button Content="Confirm Distance" Click="distanceConfirm" Height="22" Margin="1636,459,-403,0" VerticalAlignment="Top" Width="120" HorizontalAlignment="Left"></Button>
+        <Rectangle Height="176" Margin="1636,486,-473,0" Stroke="Black" StrokeThickness="3" VerticalAlignment="Top" HorizontalAlignment="Left" Width="190"/>
+        <Button x:Name="resetButton" Content="Reset" HorizontalAlignment="Left" Margin="714,957,0,0" VerticalAlignment="Top" Width="75" Click="ResetButton_Click" Background="#FFF50D0D" Foreground="#FFFFF6F6"/>
+        <TextBlock x:Name="clearedOrNoGo" HorizontalAlignment="Left" Margin="1642,630,-463,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+        <Button Content="Home" Click="HomeButton" HorizontalAlignment="Left" Margin="914,957,0,0" VerticalAlignment="Top" Width="74"/>
+        <Button Content="Exit" Click="ExitButton" HorizontalAlignment="Left" Margin="1140,957,0,0" VerticalAlignment="Top" Width="74"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="3,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"><Run FontWeight="Bold" Text="         Missiles"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,163,0,0" TextWrapping="Wrap" Text="WCMD" VerticalAlignment="Top" Width="86"/>
+        <TextBlock HorizontalAlignment="Left" Margin="16,446,0,0" TextWrapping="Wrap" Text="Gravity" VerticalAlignment="Top" Width="93"/>
+        <TextBlock HorizontalAlignment="Left" Margin="16,608,0,0" TextWrapping="Wrap" Text="JASSM" VerticalAlignment="Top" Width="111"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,791,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"><Run Text="JDAM"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="17,940,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" Height="18"><Run Text="MALD"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="-1,304,0,0" TextWrapping="Wrap" Text="ALCM-CALCM" VerticalAlignment="Top" Width="108"/>
+        <Image Source="images\b52Boxes.png" HorizontalAlignment="Left" Height="758" Margin="599,16,0,0" VerticalAlignment="Top" Width="754"/>
+
+        <TextBlock HorizontalAlignment="Right" Margin="0,760,744,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="13" Width="65"><Run FontWeight="Bold" Text="Load To:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="387,773,0,0" TextWrapping="Wrap" Text="Weapon(s)" VerticalAlignment="Top" Height="13" Width="77"/>
+        <TextBlock HorizontalAlignment="Left" Margin="385,792,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67"><Run FontWeight="Bold" Text="Left Wing:"/></TextBlock>
+        <ComboBox x:Name="leftWingCombo" HorizontalAlignment="Right" Margin="0,792,732,0" VerticalAlignment="Top" Width="77" Height="27"/>
+        <TextBlock HorizontalAlignment="Left" Margin="385,845,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run FontWeight="Bold" Text="Right Wing:"/></TextBlock>
+        <ComboBox x:Name="rightWingCombo" HorizontalAlignment="Right" Margin="0,836,732,0" VerticalAlignment="Top" Width="77" Height="25"/>
+        <TextBlock HorizontalAlignment="Left" Margin="387,885,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"><Run FontWeight="Bold" Text="Bay:"/></TextBlock>
+        <ComboBox x:Name="bayCombo" HorizontalAlignment="Right" Margin="0,885,732,0" VerticalAlignment="Top" Width="77" Height="27" />
+        <Button x:Name="weaponConfirmButton" Content="Confirm Weapons" HorizontalAlignment="Left" Margin="419,957,0,0" VerticalAlignment="Top" Width="114" Click="WeaponConfirmButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="385,928,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="15"><Run FontWeight="Bold" Text="Total Weapon Weight, lbs:"/><LineBreak/></TextBlock>
+        <TextBlock x:Name="totalWeaponWeight" HorizontalAlignment="Right" Margin="0,928,694,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="115" Height="25"/>
+
+        <Canvas x:Name="bayCanvas"  Background="Gray" AllowDrop="True"  HorizontalAlignment="Left" Height="96" Margin="914,347,0,0" VerticalAlignment="Top" Width="110" Drop="Img_Drop"/>
+
+        <StackPanel HorizontalAlignment="Left" Height="163" Margin="5,16,0,0" VerticalAlignment="Top" Width="154">
+            <Image x:Name="WCMD" Source="images\WCMD.png" RenderTransformOrigin="0.557,0.701" AllowDrop="True" Height="146" PreviewMouseDown="Weapon_PreviewMouseDown" Margin="10,0" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="134" Margin="7,328,0,0" VerticalAlignment="Top" Width="152">
+            <Image x:Name="gravity" Source="images\Gravity.png" Margin="0,0,5,0" RenderTransformOrigin="0.557,0.701" AllowDrop="True" Width="{Binding Path=ActualWidth, ElementName=canvas1}" Height="114" PreviewMouseDown="Weapon_PreviewMouseDown" />
+        </StackPanel>
+        <Canvas x:Name="leftWingCanvas"  Background="Gray" AllowDrop="True"  HorizontalAlignment="Left" Height="88" Margin="834,209,0,0" VerticalAlignment="Top" Width="110" Drop="Img_Drop">
+            <Image Height="88" x:Name ="LeftWingImage" Width="110" Canvas.ZIndex="1"/>
+        </Canvas>
+        <Canvas x:Name="rightWingCanvas" Background="Gray" AllowDrop="True"  HorizontalAlignment="Left" Height="88" Margin="1004,209,0,0" VerticalAlignment="Top" Width="110" Drop="Img_Drop"/>
+        <StackPanel HorizontalAlignment="Left" Height="149" Margin="19,459,0,0" VerticalAlignment="Top" Width="160">
+            <Image x:Name="JASSM" Source="images\JASSM.png" Margin="0,0,10,0" RenderTransformOrigin="0.733,1.257" Width="{Binding Path=ActualWidth, ElementName=canvas1}"  AllowDrop="True" Height="164" PreviewMouseDown="Weapon_PreviewMouseDown"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="148" Margin="3,645,0,0" VerticalAlignment="Top" Width="176">
+            <Image x:Name="JDAM" Source="images\JDAM.png"  AllowDrop="True" Height="145" Width="{Binding Path=ActualWidth, ElementName=canvas1}" PreviewMouseDown="Weapon_PreviewMouseDown" />
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="163" Margin="15,819,0,0" VerticalAlignment="Top" Width="174">
+            <Image x:Name="MALD" Source="images\MALD.png" Margin="0,0,10,0" RenderTransformOrigin="0.5,0.5" AllowDrop="True" Width="{Binding ActualWidth, ElementName=canvas1}" Height="156" PreviewMouseDown="Weapon_PreviewMouseDown"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="136" Margin="-4,184,0,0" VerticalAlignment="Top" Width="163">
+            <Image x:Name="ALCM" Source="images\ALCM-CALCM.png" RenderTransformOrigin="0.5,0.5"  AllowDrop="True" Width="{Binding Path=ActualWidth, ElementName=canvas1}" Height="134" Stretch="Uniform" PreviewMouseDown="Weapon_PreviewMouseDown" />
+        </StackPanel>
+        <TextBlock x:Name="bayWeaponText" HorizontalAlignment="Left" Margin="668,888,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="24" Width="121"/>
+
+    </Grid>
+</Window>

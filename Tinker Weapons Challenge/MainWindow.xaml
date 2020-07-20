@@ -6,10 +6,16 @@
         xmlns:local="clr-namespace:Tinker_Weapons_Challenge"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="MainWindow" Height="995.339" Width="1621.136">
+        Title="MainWindow" Height="995.339" Width="1621.136" Background="SlateGray">
+
     <Grid Margin="0,0,2,-21">
-        <Image Source="images\b52.jpg" Width="1000" Height="798" Margin="298,-30,313,217" HorizontalAlignment="Center" VerticalAlignment="Center" StretchDirection="UpOnly"></Image>
-        <Button Content="Ready to design?" Click="buttonToDesignWindow" FontFamily="Arial" HorizontalAlignment="Left" Margin="814,938,0,29" VerticalAlignment="Center" Width="224" RenderTransformOrigin="0.373,0.5"/>
-        <TextBlock HorizontalAlignment="Left" Margin="590,815,0,0" TextWrapping="Wrap" Text="Design and implement weapons systems and combinations for the B-52 Stratofortress!" VerticalAlignment="Top" Width="622" Height="38" FontSize="16"/>
+        <Image Source="images\b52.jpg" Width="837" Height="525" Margin="-108,0,882,460" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+
+        <Button Content="Ready to design B52?" Click="ButtonToB52DesignWindow" FontFamily="Arial" HorizontalAlignment="Left" Margin="280,662,0,305" VerticalAlignment="Center" Width="224" RenderTransformOrigin="0.373,0.5"/>
+        <Button Content="Exit" Click="ExitButton" FontFamily="Arial" HorizontalAlignment="Left" Margin="1484,922,0,29" VerticalAlignment="Center" Width="117" RenderTransformOrigin="0.373,0.5" Background="Red" Foreground="White" Height="34" ></Button>
+        <TextBlock HorizontalAlignment="Left" Margin="107,563,0,0" TextWrapping="Wrap" Text="Design and implement weapons systems and combinations for the B-52 Stratofortress!" VerticalAlignment="Top" Width="622" Height="34" FontSize="16"/>
+        <Image HorizontalAlignment="Left" Height="453" Margin="1026,72,-179,0" VerticalAlignment="Top" Width="764" Source="images/b2.jpg"/>
+        <Button Content="Ready to design B2?" HorizontalAlignment="Left" Margin="1354,662,0,0" VerticalAlignment="Top" Width="247" Click="B2Design"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1063,563,-179,0" TextWrapping="Wrap" Text="Design and implement weapons systems and combinations for the B-2 Bomber!" VerticalAlignment="Top" Width="727" Height="34" FontSize="16"/>
     </Grid>
 </Window>
