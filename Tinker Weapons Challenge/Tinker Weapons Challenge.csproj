@@ -56,9 +56,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\AirCraft.cs" />
-    <Compile Include="Model\Weapons.cs" />
+    <Compile Include="Model\CraftWeaponsDatabase.cs" />
+    <Compile Include="Model\AirWeapons.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
-    <Compile Include="Weapons.cs" />
     <Page Include="View\buildWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,6 +119,11 @@
   <ItemGroup>
     <Resource Include="View\images\b52Boxes.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\images\ALCM.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CSV\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

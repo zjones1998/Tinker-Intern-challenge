@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tinker Weapons Challenge", "Tinker Weapons Challenge\Tinker Weapons Challenge.csproj", "{9B3A75D3-E9CA-4037-955A-343755E6F25F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestProject1", "NUnitTestProject1\NUnitTestProject1.csproj", "{E91D1C53-87CF-4861-ABB0-436FBA862F96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tinker Weapons ChallengeTests", "Tinker Weapons ChallengeTests\Tinker Weapons ChallengeTests.csproj", "{BEAC995C-3481-4C7A-8F45-E11FD25B0AA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{9B3A75D3-E9CA-4037-955A-343755E6F25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B3A75D3-E9CA-4037-955A-343755E6F25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B3A75D3-E9CA-4037-955A-343755E6F25F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E91D1C53-87CF-4861-ABB0-436FBA862F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E91D1C53-87CF-4861-ABB0-436FBA862F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E91D1C53-87CF-4861-ABB0-436FBA862F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E91D1C53-87CF-4861-ABB0-436FBA862F96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEAC995C-3481-4C7A-8F45-E11FD25B0AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEAC995C-3481-4C7A-8F45-E11FD25B0AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEAC995C-3481-4C7A-8F45-E11FD25B0AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEAC995C-3481-4C7A-8F45-E11FD25B0AA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
