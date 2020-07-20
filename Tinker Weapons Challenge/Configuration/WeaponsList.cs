@@ -10,7 +10,7 @@ namespace Tinker_Weapons_Challenge.Configuration
 {
     public class WeaponsList
     {
-        private List<Weapons> weaponsList;
+        public List<Weapons> weaponsList;
         
         public WeaponsList()
         {

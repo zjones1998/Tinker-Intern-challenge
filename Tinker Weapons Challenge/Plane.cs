@@ -16,7 +16,7 @@ namespace Tinker_Weapons_Challenge
 		public int MaxFuel{ get; set; }
 		public int MinFuel{ get; set; }
 
-		public int Range { get; set; }
+		public decimal Range { get; set; }
 
 		//This will set the weapon on the right wing and the weight.
 		public string RWing { get; set; }
@@ -33,8 +33,7 @@ namespace Tinker_Weapons_Challenge
 
 		public int BayWeight { get; set; }
 
-		public Plane(string planeName, int baseWeight, int maxWeight, int maxFuel, int minFuel, int range, string rWing, int rWingWeight,
-			string lWing, int lWingWeight, string bay, int bayWeight)
+		/*public Plane(string planeName, int baseWeight, int maxWeight, int maxFuel, int minFuel, int range)
 		{
 			PlaneName = planeName;
 			BaseWeight = baseWeight;
@@ -42,13 +41,15 @@ namespace Tinker_Weapons_Challenge
 			MaxFuel = maxFuel;
 			MinFuel = minFuel;
 			Range = range;
-			RWing = rWing;
-			RWingWeight = rWingWeight;
-			LWing = lWing;
-			LWingWeight = lWingWeight;
-			Bay = bay;
-			BayWeight = bayWeight;
 		}
-
+		public Plane()
+		{
+			PlaneName = "DEFAULT_PlaneName";
+			BaseWeight = 0;
+			MaxWeight = 0;
+			MaxFuel = 0;
+			MinFuel = 0;
+			Range = 0;
+		}*/
 	}
 }

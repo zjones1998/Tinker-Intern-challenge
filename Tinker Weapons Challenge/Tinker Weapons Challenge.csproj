@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Fuel.cs" />
     <Compile Include="Configuration\PlaneList.cs" />
     <Compile Include="Configuration\WeaponsList.cs" />
     <Compile Include="Plane.cs" />

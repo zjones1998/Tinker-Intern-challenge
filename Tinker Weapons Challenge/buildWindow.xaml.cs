@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tinker_Weapons_Challenge.Configuration;
 
 namespace Tinker_Weapons_Challenge
 {
@@ -26,6 +28,8 @@ namespace Tinker_Weapons_Challenge
 		public int planeWeight = 185000;
 		int baseFuel = 150000;
 		int maxWeight = 485000;
+		private Fuel _fuels = null;
+		public decimal distance;
 		int GRAVITYWeight = 7988;
 		int JASSMWeight = 24946;
 		int JDAMWeight = 9722;
@@ -33,16 +37,24 @@ namespace Tinker_Weapons_Challenge
 		int WCMDWeight = 16324;
 		int CALCMWeight = 30194;
 		int ALCMWeight = 30194;
+		Plane B52 = new Plane();
 		
+
+
 
 		public buildWindow()
 		{
 			InitializeComponent();
-			
 
+			B52.PlaneName = "B52";
+			B52.BaseWeight = 185000;
+			B52.MaxWeight = 485000;
+			B52.Range = 4825;
+			B52.MinFuel = 100000;
+			B52.MaxFuel = 300000;
 			fuelWeights = new string[] {"0", "100,000", "150,000", "200,000" };
 			weapons = new string[] { "None", "Gravity", "JASSM", "JDAM", "MALD", "ALCM-CALCM" };
-
+			
 			foreach(string w in weapons)
 			{
 				leftWingCombo.Items.Add(w);
@@ -81,8 +93,8 @@ namespace Tinker_Weapons_Challenge
 				else
 					clearedOrNoGo.Text = "Cleared for takeoff!";
 			}
-			
 
+			
 		}
 
 		private void ResetButton_Click(object sender, RoutedEventArgs e)
@@ -190,5 +202,18 @@ namespace Tinker_Weapons_Challenge
 			WeaponWeight = rightWing + leftWing + bayWeight;
 			totalWeaponWeight.Text = String.Format("{0:n0}", WeaponWeight);
 		}
-	}
+
+        private void distanceConfirm(object sender, RoutedEventArgs e)
+        {
+			decimal.TryParse(Distance.Text, out distance);
+			if (distance > B52.Range)
+			{
+
+			}
+			else
+			{
+				_fuels.fuel_calc(distance, B52.Range, B52.MaxFuel);
+			}
+		}
+    }
 }

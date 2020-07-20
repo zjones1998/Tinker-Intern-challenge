@@ -13,11 +13,15 @@
         <TextBlock HorizontalAlignment="Left" Margin="794,524,0,0" TextWrapping="Wrap" Height="19" Width="41" VerticalAlignment="Top"><Run Text="150,000"/><LineBreak/><Run/></TextBlock>
         <TextBlock x:Name="fuelAddTextBlock" HorizontalAlignment="Left" Margin="722,548,0,0" TextWrapping="Wrap" Text="Add Fuel, lbs" Height="22" Width="72" VerticalAlignment="Top"/>
         <ComboBox x:Name="fuelCombo" HorizontalAlignment="Left" Margin="794,548,0,0" Width="96" ItemsSource="{Binding fuelWeights}" VerticalAlignment="Top"/>
+        
         <TextBlock HorizontalAlignment="Left" Margin="722,504,0,0" TextWrapping="Wrap" Text="B-52 Weight" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="794,504,0,0" TextWrapping="Wrap" Text="185,000" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="722,603,0,0" TextWrapping="Wrap" Text="Total Weight:" VerticalAlignment="Top"/>
         <TextBlock x:Name="totalWeightBox" HorizontalAlignment="Left" Margin="804,603,0,0" TextWrapping="Wrap" Text="0" Width="86" VerticalAlignment="Top"/>
         <Button Content="Confirm Fuel changes" Click="fuelConfirm" HorizontalAlignment="Left" Margin="724,575,0,0" Width="166" Height="23" VerticalAlignment="Top"/>
+        <TextBox x:Name="Distance" HorizontalAlignment="Left" Height="23" Margin="751,398,0,0" TextWrapping="Wrap" Text="Enter Distance" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Confirm Distance" Click="distanceConfirm" Height="23" Margin="751,426,129,0" VerticalAlignment="Top" Width="120"></Button>
+        
         <Image x:Name="WCMD" Source="images\WCMD.png" AllowDrop="True" Margin="10,21,904,688" />
         <Image x:Name="gravity" Source="images\Gravity.png" Margin="0,141,889,544" RenderTransformOrigin="0.557,0.701" AllowDrop="True" />
         <Image x:Name="JASSM" Source="images\JASSM.png" Margin="10,283,879,422" RenderTransformOrigin="0.733,1.257"  AllowDrop="True" ></Image>
@@ -48,6 +52,7 @@
         <TextBlock x:Name="errorBay" HorizontalAlignment="Left" Margin="347,581,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217" Height="27"/>
         <TextBlock HorizontalAlignment="Left" Margin="149,613,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154" Height="15"><Run FontWeight="Bold" Text="Total Weapon Weight, lbs:"/><LineBreak/></TextBlock>
         <TextBlock x:Name="totalWeaponWeight" HorizontalAlignment="Left" Margin="314,613,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="115" Height="25"/>
+
 
     </Grid>
 </Window>

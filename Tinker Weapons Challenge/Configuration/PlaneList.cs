@@ -10,13 +10,13 @@ namespace Tinker_Weapons_Challenge.Configuration
 {
     public class PlaneList
     {
-        private List<Plane> planeList;
+        public List<Plane> planeList { get;  set; }
+        public Plane B52 { get; set; }
 
         public PlaneList()
         {
-            PlaneList.Add(new Plane { PlaneName = "B-52", BaseWeight = 185000, MaxWeight = 485000, MaxFuel = 300000, MinFuel = 100000, 
-                Range = 4825, RWing = "None", RWingWeight = 0, LWing = "None", LWingWeight = 0, Bay = "None", BayWeight = 0 }) ;
-
+            planeList.Add(new Plane { PlaneName = "B-52", BaseWeight = 185000, MaxWeight = 485000, MaxFuel = 300000, MinFuel = 100000, 
+                Range = 4825}) ;
         }
 
     }
