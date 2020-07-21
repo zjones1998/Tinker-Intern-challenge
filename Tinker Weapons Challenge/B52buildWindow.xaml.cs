@@ -29,11 +29,13 @@ namespace Tinker_Weapons_Challenge
 		private Fuel _fuels = null;
 		public decimal distance;
 
-		int WeaponWeight = 0;
-		int leftWing = 0;
-		int rightWing = 0;
-		int bayWeight = 0;
-		string imageName;
+		int WeaponWeight;
+		private int leftWing;
+		private int rightWing;
+		private int bayWeight;
+		string imagePath;
+		int nullWeight = int.Parse("0", NumberStyles.AllowThousands, new CultureInfo("en-au"));
+
 
 		Plane B52 = new Plane();
 		
@@ -53,13 +55,14 @@ namespace Tinker_Weapons_Challenge
 			fuelWeights = new string[] {"0", "100,000", "150,000", "200,000" };
 			weapons = new string[] { "None", "Gravity", "JASSM", "JDAM", "MALD", "ALCM-CALCM" };
 			
+			/*
 			foreach(string w in weapons)
 			{
 				leftWingCombo.Items.Add(w);
 				rightWingCombo.Items.Add(w);
-				bayCombo.Items.Add(w);
+				//bayCombo.Items.Add(w);
 			}
-				
+			*/
 
 			DataContext = this;
 		}
@@ -113,7 +116,11 @@ namespace Tinker_Weapons_Challenge
 
 		private void WeaponConfirmButton_Click(object sender, RoutedEventArgs e)
 		{
-			ComboBoxChoice();
+			WeaponWeight = calcWeaponWeight(rightWing, leftWing, bayWeight);
+			if (WeaponWeight == 0)
+				totalWeaponWeight.Text = "No weapons loaded.";
+			else
+				totalWeaponWeight.Text = String.Format("{0:n0}", WeaponWeight);
 		}
 
         private void distanceConfirm(object sender, RoutedEventArgs e)
@@ -138,11 +145,11 @@ namespace Tinker_Weapons_Challenge
 		// This deasls woth the drag and drop functions
 		private void Weapon_PreviewMouseDown(object sender, MouseButtonEventArgs e)
 		{
+			imagePath = ((Image)sender).Source.ToString();
 			DragDrop.DoDragDrop((DependencyObject)sender, ((Image)sender).Source, DragDropEffects.Copy);
-			imageName = ((Image)sender).Source.ToString();
 		}
 
-		private void Img_Drop(object sender, DragEventArgs e)
+		private void Left_Drop(object sender, DragEventArgs e)
 		{
 			Weapons w = new Weapons();
 			foreach (var format in e.Data.GetFormats())
@@ -150,6 +157,7 @@ namespace Tinker_Weapons_Challenge
 				ImageSource imageSource = e.Data.GetData(format) as ImageSource;
 				if (imageSource != null)
 				{
+					Canvas canvas = new Canvas();
 					Image img = new Image();
 					//img.Height = 50;
 					img.Width = 110;
@@ -158,11 +166,65 @@ namespace Tinker_Weapons_Challenge
 					((Canvas)sender).Children.Add(img);
 					Canvas.SetTop(img, 0);
 					Canvas.SetLeft(img, 0);
-					Image imageBox;
-					imageBox = leftWingCanvas.Children[1] as Image;
+					string finalPath = null;
+					finalPath = System.IO.Path.GetFileNameWithoutExtension(imagePath);
 
+					//MessageBox.Show(finalPath);
+					//w = new Weapons(finalPath, w.getWeight());
+					leftWing = leftChoice(finalPath);
+				}
+			}
+		}
 
+		private void Right_Drop(object sender, DragEventArgs e)
+		{
+			Weapons w = new Weapons();
+			foreach (var format in e.Data.GetFormats())
+			{
+				ImageSource imageSource = e.Data.GetData(format) as ImageSource;
+				if (imageSource != null)
+				{
+					Canvas canvas = new Canvas();
+					Image img = new Image();
+					//img.Height = 50;
+					img.Width = 110;
+					img.Stretch = Stretch.Uniform;
+					img.Source = imageSource;
+					((Canvas)sender).Children.Add(img);
+					Canvas.SetTop(img, 0);
+					Canvas.SetLeft(img, 0);
+					string finalPath = null;
+					finalPath = System.IO.Path.GetFileNameWithoutExtension(imagePath);
 
+					//MessageBox.Show(finalPath);
+					//w = new Weapons(finalPath, w.getWeight());
+					rightWing = rightChoice(finalPath);
+				}
+			}
+		}
+		private void bay_Drop(object sender, DragEventArgs e)
+		{
+			Weapons w = new Weapons();
+			foreach (var format in e.Data.GetFormats())
+			{
+				ImageSource imageSource = e.Data.GetData(format) as ImageSource;
+				if (imageSource != null)
+				{
+					Canvas canvas = new Canvas();
+					Image img = new Image();
+					//img.Height = 50;
+					img.Width = 110;
+					img.Stretch = Stretch.Uniform;
+					img.Source = imageSource;
+					((Canvas)sender).Children.Add(img);
+					Canvas.SetTop(img, 0);
+					Canvas.SetLeft(img, 0);
+					string finalPath = null;
+					finalPath = System.IO.Path.GetFileNameWithoutExtension(imagePath);
+
+					//MessageBox.Show(finalPath);
+					//w = new Weapons(finalPath, w.getWeight());
+					bayWeight = bayChoice(finalPath);
 				}
 			}
 		}
@@ -180,79 +242,143 @@ namespace Tinker_Weapons_Challenge
 		// combobox. Removed the code from 
 		// the WeaponConfirm button
 		//=====================================
-		public void ComboBoxChoice()
+		public int leftChoice(string weaponName)
 		{
 			// Make a new weapon that will be used to make the weapon name and weight for combobox.
 			Weapons w = new Weapons();
 
-			
-			MessageBoxResult result = new MessageBoxResult();
-			int nullWeight = int.Parse("0", NumberStyles.AllowThousands, new CultureInfo("en-au"));
-
-			if (leftWingCombo.Text == "Gravity")
+			if (weaponName.Equals("Gravity"))
 			{
 				w = new Weapons("Gravity", 7988);
 				leftWing = w.getWeight();
+				LeftWeaponChoice.Text = weaponName;
 			}
 
-			if (rightWingCombo.Text == "Gravity")
-				rightWing = w.getWeight();
-
-			if (bayCombo.Text == "Gravity")
-				bayWeight = w.getWeight();
 			//-----------------------------------------------------
-			if (leftWingCombo.Text == "JASSM")
+			if (weaponName.Equals("JASSM"))
 			{
 				w = new Weapons("JASSM", 24946);
 				leftWing = w.getWeight();
+				LeftWeaponChoice.Text = weaponName;
 			}
 
-			if (rightWingCombo.Text == "JASSM")
-				rightWing = w.getWeight();
-
-			if (bayCombo.Text == "JASSM")
-				bayWeight = w.getWeight();
 			//-----------------------------------------------------
-			if (leftWingCombo.Text == "MALD")
+			if (weaponName.Equals("MALD"))
 			{
 				w = new Weapons("MALD", 7626);
 				leftWing = w.getWeight();
+				LeftWeaponChoice.Text = weaponName;
 			}
 
-			if (rightWingCombo.Text == "MALD")
-				rightWing = w.getWeight();
 
-			if (bayCombo.Text == "MALD")
-			{
-				// error handling for  MALD that can't be loaded into bay.
-				result = MessageBox.Show("Error, cannot be loaded into bay", "Confirmation");
-				rightWing = 0;
-				leftWing = 0;
-				totalWeaponWeight.Text = nullWeight.ToString();
-			}
 			//-----------------------------------------------------
-			if (leftWingCombo.Text == "JDAM")
+			if (weaponName.Equals("JDAM"))
 			{
 				w = new Weapons("JDAM", 9722);
 				leftWing = w.getWeight();
+				LeftWeaponChoice.Text = weaponName;
 			}
 
-			if (rightWingCombo.Text == "JDAM")
-				rightWing = w.getWeight();
-
-			if (bayCombo.Text == "JDAM")
-				bayWeight = w.getWeight();
 			//-----------------------------------------------------
-			if (leftWingCombo.Text == "WCDM")
+			if (weaponName.Equals("WCMD"))
 			{
-				w = new Weapons("WCDM", 16324);
+				w = new Weapons("WCMD", 16324);
 				leftWing = w.getWeight();
+				LeftWeaponChoice.Text = weaponName;
 			}
 
-			if (rightWingCombo.Text == "WCDM")
-				rightWing = w.getWeight(); ;
 
-			if (bayCombo.Text == "WCDM")
+			//-----------------------------------------------------
+			if (weaponName.Equals("ALCM-CALCM"))
+			{
+				w = new Weapons("ALCM-CALCM", 30194);
+				leftWing = w.getWeight();
+				LeftWeaponChoice.Text = weaponName;
+			}
+
+
+			//-----------------------------------------------------
+			// Checks for no selection or "none" choice
+			if (weaponName.Equals(null))
+				leftWing = 0;
+
+
+			// calculate total weapon weights. 
+			//WeaponWeight = rightWing + leftWing + bayWeight;
+			//totalWeaponWeight.Text = String.Format("{0:n0}", WeaponWeight);
+			return leftWing;
+		}
+
+		public int rightChoice(string weaponName)
+		{
+			Weapons w = new Weapons();
+			int rightWing = 0;
+			if (weaponName.Equals("None"))
+				rightWing = 0;
+
+			if (weaponName.Equals("ALCM-CALCM"))
+			{
+				w = new Weapons("ALCM-CALCM", 30194);
+				rightWing = w.getWeight();
+				RightWeaponChoice.Text = weaponName;
+			}
+
+			if (weaponName.Equals("WCMD"))
+			{
+				w = new Weapons("WCMD", 30194);
+				rightWing = w.getWeight();
+				RightWeaponChoice.Text = w.getName();
+			}
+
+
+			if (weaponName.Equals("MALD"))
+			{
+				w = new Weapons("MALD", 30194);
+				rightWing = w.getWeight();
+				RightWeaponChoice.Text = weaponName;
+			}
+
+			if (weaponName.Equals("JASSM"))
+			{
+				w = new Weapons("JASSM", 24946);
+				rightWing = w.getWeight();
+				RightWeaponChoice.Text = weaponName;
+			}
+
+			if (weaponName.Equals("JDAM"))
+			{
+				w = new Weapons("JDAM", 9722);
+				rightWing = w.getWeight();
+				RightWeaponChoice.Text = weaponName;
+			}
+
+			if (weaponName.Equals("Gravity"))
+			{
+				w = new Weapons("Gravity", 7988);
+				rightWing = w.getWeight();
+				RightWeaponChoice.Text = weaponName;
+
+			}
+			return rightWing;
+		}
+
+
+		public int bayChoice(string weaponName)
+		{
+			Weapons w = new Weapons();
+			MessageBoxResult result = new MessageBoxResult();
+			int bayWeight = 0;
+			if (weaponName.Equals("None"))
+				bayWeight = 0;
+
+			if (weaponName.Equals("ALCM-CALCM"))
+			{
+				w = new Weapons("ALCM-CALCM", 30194);
+				bayWeight = w.getWeight();
+				bayWeaponChoice.Text = weaponName;
+			}
+
+			if (weaponName.Equals("WCMD"))
 			{
 				// error handling for  MALD that can't be loaded into bay.
 				result = MessageBox.Show("Error, cannot be loaded into bay", "Confirmation");
@@ -260,32 +386,43 @@ namespace Tinker_Weapons_Challenge
 				leftWing = 0;
 				totalWeaponWeight.Text = nullWeight.ToString();
 			}
-			//-----------------------------------------------------
-			if (leftWingCombo.Text == "ALCM-CALCM")
+
+
+			if (weaponName.Equals("MALD"))
 			{
-				w = new Weapons("ALCM-CALCM", 30194);
-				leftWing = w.getWeight();
+				// error handling for  MALD that can't be loaded into bay.
+				result = MessageBox.Show("Error, cannot be loaded into bay", "Confirmation");
+				rightWing = 0;
+				leftWing = 0;
+				totalWeaponWeight.Text = nullWeight.ToString();
 			}
 
-			if (rightWingCombo.Text == "ALCM-CALCM")
-				rightWing = w.getWeight();
-
-			if (bayCombo.Text == "ALCM-CALCM")
+			if (weaponName.Equals("JASSM"))
+			{
+				w = new Weapons("JASSM", 24946);
 				bayWeight = w.getWeight();
-			//-----------------------------------------------------
-			// Checks for no selection or "none" choice
-			if (leftWingCombo.Text == "None" || leftWingCombo.Text == null)
-				leftWing = 0;
+				bayWeaponChoice.Text = weaponName;
+			}
 
-			if (rightWingCombo.Text == "None" || leftWingCombo.Text == null)
-				rightWing = 0;
+			if (weaponName.Equals("JDAM"))
+			{
+				w = new Weapons("JDAM", 9722);
+				bayWeight = w.getWeight();
+				bayWeaponChoice.Text = weaponName;
+			}
 
-			if (bayCombo.Text == "None" || leftWingCombo.Text == null)
-				bayWeight = 0;
+			if (weaponName.Equals("Gravity"))
+			{
+				w = new Weapons("Gravity", 7988);
+				bayWeight = w.getWeight();
+				bayWeaponChoice.Text = weaponName;
+			}
+			return bayWeight;
+		}
 
-			// calculate total weapon weights. 
-			WeaponWeight = rightWing + leftWing + bayWeight;
-			totalWeaponWeight.Text = String.Format("{0:n0}", WeaponWeight);
+		public int calcWeaponWeight(int rightWeight, int leftWeight, int backWeight)
+		{
+			return rightWeight + leftWeight + backWeight;
 		}
 	}
 
