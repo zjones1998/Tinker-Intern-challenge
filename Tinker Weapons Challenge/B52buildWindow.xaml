@@ -77,6 +77,7 @@
         <TextBlock x:Name="bayWeaponChoice" HorizontalAlignment="Left" Margin="544,885,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="77" Height="16"/>
         <TextBlock x:Name="RightWeaponChoice" HorizontalAlignment="Left" Margin="544,848,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="65"/>
         <TextBlock x:Name="LeftWeaponChoice" HorizontalAlignment="Left" Margin="544,791,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="65"/>
+        <Button x:Name="SaveButton" Content="Save Weapons!" HorizontalAlignment="Left" Margin="916,739,0,0" VerticalAlignment="Top" Width="108" Height="33" Click="Save_Button"/>
 
     </Grid>
 </Window>

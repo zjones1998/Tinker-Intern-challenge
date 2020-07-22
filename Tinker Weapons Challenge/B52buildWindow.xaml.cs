@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,6 @@ namespace Tinker_Weapons_Challenge
 	{
 		public string[] fuelWeights { get; set; }
 		public string[] weapons { get; set; }
-		private Fuel _fuels = null;
 		public decimal distance;
 
 		int WeaponWeight;
@@ -35,8 +35,7 @@ namespace Tinker_Weapons_Challenge
 		private int bayWeight;
 		string imagePath;
 		int nullWeight = int.Parse("0", NumberStyles.AllowThousands, new CultureInfo("en-au"));
-
-
+		public static string dirParameter = AppDomain.CurrentDomain + @"saveFile.txt";
 		Plane B52 = new Plane();
 		
 
@@ -46,23 +45,16 @@ namespace Tinker_Weapons_Challenge
 		{
 			InitializeComponent();
 
+			// Make a new B52
 			B52.PlaneName = "B52";
 			B52.BaseWeight = 185000;
 			B52.MaxWeight = 485000;
 			B52.Range = 4825;
 			B52.MinFuel = 100000;
 			B52.MaxFuel = 300000;
-			fuelWeights = new string[] {"0", "100,000", "150,000", "200,000" };
-			weapons = new string[] { "None", "Gravity", "JASSM", "JDAM", "MALD", "ALCM-CALCM" };
+			fuelWeights = new string[] {"0", "50,000", "75,000","100,000", "150,000", "200,000" };
+			//weapons = new string[] { "None", "Gravity", "JASSM", "JDAM", "MALD", "ALCM-CALCM" };
 			
-			/*
-			foreach(string w in weapons)
-			{
-				leftWingCombo.Items.Add(w);
-				rightWingCombo.Items.Add(w);
-				//bayCombo.Items.Add(w);
-			}
-			*/
 
 			DataContext = this;
 		}
@@ -424,6 +416,50 @@ namespace Tinker_Weapons_Challenge
 		{
 			return rightWeight + leftWeight + backWeight;
 		}
-	}
 
+		private void Save_Button(object sender, RoutedEventArgs e)
+		{
+			SaveEvent();
+		}
+
+		public void SaveEvent()
+		{
+			MessageBoxResult result;
+			result = MessageBox.Show("Do you want to save file?", "Comfirmation", MessageBoxButton.YesNo);
+			if (result == MessageBoxResult.No)
+			{
+				return;
+			}
+			if (result == MessageBoxResult.Yes)
+			{
+				try
+				{
+					if (LeftWeaponChoice.Text != null && RightWeaponChoice.Text != null && bayWeaponChoice.Text != null)
+					{
+						saveFile(LeftWeaponChoice.Text, RightWeaponChoice.Text, bayWeaponChoice.Text);
+					}
+				}
+				catch (Exception err)
+				{
+					MessageBox.Show(err.ToString());
+				}
+			}
+		}
+
+		public void saveFile(string leftWeapon, string rightWeapon, string bay)
+		{
+			Weapons left = new Weapons();
+			string Msg = "Left: " + leftWeapon + " ; Right: " + rightWeapon + " ; Bay: " + bay;
+
+			// Save File to .txt
+			FileStream fParameter = new FileStream(dirParameter, FileMode.Create, FileAccess.Write);
+			StreamWriter m_WriterParameter = new StreamWriter(fParameter);
+			m_WriterParameter.BaseStream.Seek(0, SeekOrigin.End);
+			m_WriterParameter.Write(Msg);
+			m_WriterParameter.Flush();
+			m_WriterParameter.Close();
+		}
+
+
+	}
 }
