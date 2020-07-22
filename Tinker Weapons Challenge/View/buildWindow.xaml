@@ -27,6 +27,7 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1">
             <Image Source="images\b52Boxes.png" Height="900" Width="Auto" Margin="5" />
+
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
             <Label x:Name="label" Grid.Row="0" Grid.Column="1" Content="B-52" Margin="0,30,950,5" Height="150" Width="350" FontWeight="Bold" FontSize="125" RenderTransformOrigin="0.475,-2.077" BorderBrush="Black" FontFamily="Times New Roman"/>
@@ -35,11 +36,11 @@
             <ToggleButton IsChecked="{Binding Path=BtnRightWingSelected}" x:Name="btnRtWing" Content="Right Wing" Height="70" Width="90" Margin="650,260,505.556,0" RenderTransformOrigin="0.681,1.422"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <ToggleButton x:Name="btnLtWing" IsChecked="{Binding Path=BtnLeftWingSelected}" Content="Left Wing" Height="70" Width="90" Margin="330,260,505.556,0" RenderTransformOrigin="0.681,1.422" Click="btnLtWing_Click"/>
+            <ToggleButton x:Name="btnLtWing" IsChecked="{Binding BtnLeftWingSelected}" Content="Left Wing" Height="70" Width="90" Margin="613,260,789,0" RenderTransformOrigin="0.681,1.422" Click="btnLtWing_Click"/>
         </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1">
-            <ToggleButton x:Name="btnBay" IsChecked="{Binding Path=BtnBaySelected}"  Content="Bay" Height="110" Width="45" Margin="490,400,505.556,0" RenderTransformOrigin="0.681,1.422"/>
-        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="267,-1,-30,160">
+            <ToggleButton x:Name="btnBay" IsChecked="{Binding BtnBaySelected}"  Content="Bay" Height="110" Width="45" Margin="716,400,731,0" RenderTransformOrigin="0.681,1.422"/>
+       </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="0">
             <Label x:Name="lblWeapons" Content="WEAPONS"  Margin="0,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Height="37" Width="Auto"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="LightGray"/>
         </StackPanel>
@@ -129,5 +130,10 @@
             </Grid>
         </StackPanel>
         <Slider x:Name="slider" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Save" HorizontalAlignment="Left" Width="130" Margin="1352,0,0,786" Grid.Column="1" Height="24" VerticalAlignment="Bottom" Click="SaveButton"/>
+        <Button Content="Reset" HorizontalAlignment="Left" Width="130" Height="26" VerticalAlignment="Bottom" Grid.Column="1" Margin="1352,0,0,755" Background="Red" Foreground="White" Click="ResetButton"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Width="130" Height="26" VerticalAlignment="Bottom" Grid.Column="1" Margin="1352,0,0,693" Click="ExitButton"/>
+        <Button Content="Home" HorizontalAlignment="Left" Width="130" Height="26" VerticalAlignment="Bottom" Grid.Column="1" Margin="1352,0,0,724" Click="HomeButton"/>
+
     </Grid>
 </Window>
