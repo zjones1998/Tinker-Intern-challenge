@@ -9,29 +9,7 @@ namespace Tinker_Weapons_Challenge
 {
 	public class Weapons
 	{
-		public string Weaponname { get; set;}
+		public string WeaponName { get; set;}
 		public int Weight { get; set; }
-
-		public Weapons(string weaponname, int weight) 
-		{
-			Weaponname = weaponname;
-			Weight = weight;
-		}
-
-		public Weapons()
-        {
-			Weaponname = "DEFAULT_Weaponname";
-			Weight = 0;
-        }
-
-		public int getWeight()
-		{
-			return Weight;
-		}
-
-		public string getName()
-		{
-			return Weaponname;
-		}
 	}
 }

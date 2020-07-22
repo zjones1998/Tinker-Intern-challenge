@@ -32,5 +32,26 @@ namespace FuelUnitTest
             decimal ExpectedFuel = 100000;
             Assert.AreEqual<decimal>(ExpectedFuel, FuelNeeded);
         }
+        
+        [TestMethod]
+        public void TestMethod3()
+        {
+            Plane Test = new Plane();
+            Test.PlaneName = "Test";
+            string ActualName = Test.PlaneName;
+            string ExpectedName = "Test";
+            Assert.AreEqual<string>(ExpectedName, ActualName);
+        }
+
+        [TestMethod]
+        public void TestMethod4()
+        {
+            int RWingTest = 5000;
+            int LWingTest = 5000;
+            int BTest = 5000;
+            int actualWeight = calcWeaponWeight(RWingTest, LWingTest, BTest);
+            expectedWeight = 15000;
+            Assert.AreEqual<int>(actualWeight, expectedWeight);
+        }
     }
 }

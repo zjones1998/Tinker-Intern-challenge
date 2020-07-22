@@ -24,45 +24,57 @@ namespace Tinker_Weapons_Challenge
 	/// </summary>
 	public partial class B52buildWindow : Window
 	{
-		public string[] fuelWeights { get; set; }
-		public string[] weapons { get; set; }
+		//public string[] fuelWeights { get; set; }
+		//public string[] weapons { get; set; }
 		private Fuel _fuels = null;
 		public decimal distance;
 
 		int WeaponWeight;
-		private int leftWing;
-		private int rightWing;
-		private int bayWeight;
+		//private int leftWing;
+		//private int rightWing;
+		//private int bayWeight;
 		string imagePath;
 		int nullWeight = int.Parse("0", NumberStyles.AllowThousands, new CultureInfo("en-au"));
 
-
+		//Set up the Plane and Weapon Classes that will be needed.
 		Plane B52 = new Plane();
-		
-
+		Weapons Gravity = new Weapons();
+		Weapons Jassm= new Weapons();
+		Weapons Jdam = new Weapons();
+		Weapons Mald = new Weapons();
+		Weapons Wcmd = new Weapons();
+		Weapons Calcm = new Weapons();
+		Weapons Alcm = new Weapons();
 
 
 		public B52buildWindow()
 		{
 			InitializeComponent();
-
+			//Assign values for plane and weapons.
 			B52.PlaneName = "B52";
 			B52.BaseWeight = 185000;
 			B52.MaxWeight = 485000;
 			B52.Range = 4825;
 			B52.MinFuel = 100000;
 			B52.MaxFuel = 300000;
-			fuelWeights = new string[] {"0", "100,000", "150,000", "200,000" };
-			weapons = new string[] { "None", "Gravity", "JASSM", "JDAM", "MALD", "ALCM-CALCM" };
-			
-			/*
-			foreach(string w in weapons)
-			{
-				leftWingCombo.Items.Add(w);
-				rightWingCombo.Items.Add(w);
-				//bayCombo.Items.Add(w);
-			}
-			*/
+			Gravity.WeaponName = "Gravity";
+			Gravity.Weight = 7988;
+			Jassm.WeaponName = "JASSM";
+			Jassm.Weight = 24946;
+			Jdam.WeaponName = "JDAM";
+			Jdam.Weight = 9722;
+			Mald.WeaponName = "MALD";
+			Mald.Weight = 7626;
+			Wcmd.WeaponName = "WCMD";
+			Wcmd.Weight = 16324;
+			Calcm.WeaponName = "CALCM";
+			Calcm.Weight = 30194;
+			Alcm.WeaponName = "ALCM";
+			Alcm.Weight = 30194;
+
+			//fuelWeights = new string[] {"0", "100,000", "150,000", "200,000" };
+			//weapons = new string[] { "None", "Gravity", "JASSM", "JDAM", "MALD", "ALCM-CALCM" };
+
 
 			DataContext = this;
 		}
@@ -116,7 +128,7 @@ namespace Tinker_Weapons_Challenge
 
 		private void WeaponConfirmButton_Click(object sender, RoutedEventArgs e)
 		{
-			WeaponWeight = calcWeaponWeight(rightWing, leftWing, bayWeight);
+			WeaponWeight = calcWeaponWeight(B52.RWingWeight, B52.LWingWeight, B52.BayWeight);
 			if (WeaponWeight == 0)
 				totalWeaponWeight.Text = "No weapons loaded.";
 			else
@@ -171,7 +183,7 @@ namespace Tinker_Weapons_Challenge
 
 					//MessageBox.Show(finalPath);
 					//w = new Weapons(finalPath, w.getWeight());
-					leftWing = leftChoice(finalPath);
+					B52.LWing = leftChoice(finalPath);
 				}
 			}
 		}
@@ -198,7 +210,7 @@ namespace Tinker_Weapons_Challenge
 
 					//MessageBox.Show(finalPath);
 					//w = new Weapons(finalPath, w.getWeight());
-					rightWing = rightChoice(finalPath);
+					B52.RWing = rightChoice(finalPath);
 				}
 			}
 		}
@@ -224,7 +236,7 @@ namespace Tinker_Weapons_Challenge
 
 					//MessageBox.Show(finalPath);
 					//w = new Weapons(finalPath, w.getWeight());
-					bayWeight = bayChoice(finalPath);
+					B52.BayWeight = bayChoice(finalPath);
 				}
 			}
 		}
@@ -244,180 +256,163 @@ namespace Tinker_Weapons_Challenge
 		//=====================================
 		public int leftChoice(string weaponName)
 		{
-			// Make a new weapon that will be used to make the weapon name and weight for combobox.
-			Weapons w = new Weapons();
-
-			if (weaponName.Equals("Gravity"))
+			B52.LWingWeight = 0;
+			if (B52.LWing.Equals(Gravity.WeaponName))
 			{
-				w = new Weapons("Gravity", 7988);
-				leftWing = w.getWeight();
-				LeftWeaponChoice.Text = weaponName;
+				B52.LWingWeight = Gravity.Weight;
 			}
 
 			//-----------------------------------------------------
-			if (weaponName.Equals("JASSM"))
+			if (B52.LWing.Equals(Jassm.WeaponName))
 			{
-				w = new Weapons("JASSM", 24946);
-				leftWing = w.getWeight();
-				LeftWeaponChoice.Text = weaponName;
+				B52.LWingWeight = Jassm.Weight;
 			}
 
 			//-----------------------------------------------------
-			if (weaponName.Equals("MALD"))
+			if (B52.LWing.Equals(Mald.WeaponName))
 			{
-				w = new Weapons("MALD", 7626);
-				leftWing = w.getWeight();
-				LeftWeaponChoice.Text = weaponName;
+				B52.LWingWeight = Mald.Weight;
 			}
 
 
 			//-----------------------------------------------------
-			if (weaponName.Equals("JDAM"))
+			if (B52.LWing.Equals(Jdam.WeaponName))
 			{
-				w = new Weapons("JDAM", 9722);
-				leftWing = w.getWeight();
-				LeftWeaponChoice.Text = weaponName;
+				B52.LWingWeight = Jassm.Weight;
 			}
 
 			//-----------------------------------------------------
-			if (weaponName.Equals("WCMD"))
+			if (B52.LWing.Equals(Wcmd.WeaponName))
 			{
-				w = new Weapons("WCMD", 16324);
-				leftWing = w.getWeight();
-				LeftWeaponChoice.Text = weaponName;
+				B52.LWingWeight = Wcmd.Weight;
 			}
 
 
 			//-----------------------------------------------------
-			if (weaponName.Equals("ALCM-CALCM"))
+			if (B52.LWing.Equals(Alcm.WeaponName))
 			{
-				w = new Weapons("ALCM-CALCM", 30194);
-				leftWing = w.getWeight();
-				LeftWeaponChoice.Text = weaponName;
+				B52.LWingWeight = Alcm.Weight;
 			}
 
+			if (B52.LWing.Equals(Calcm.WeaponName))
+			{
+				B52.LWingWeight = Alcm.Weight;
+			}
 
 			//-----------------------------------------------------
 			// Checks for no selection or "none" choice
-			if (weaponName.Equals(null))
-				leftWing = 0;
+			else B52.LWingWeight = 0;
 
-
+			LeftWeaponChoice.Text = B52.LWing ;
+					
 			// calculate total weapon weights. 
 			//WeaponWeight = rightWing + leftWing + bayWeight;
 			//totalWeaponWeight.Text = String.Format("{0:n0}", WeaponWeight);
-			return leftWing;
+			return B52.LWingWeight;
 		}
 
 		public int rightChoice(string weaponName)
 		{
-			Weapons w = new Weapons();
-			int rightWing = 0;
-			if (weaponName.Equals("None"))
-				rightWing = 0;
+			B52.RWingWeight = 0;
 
-			if (weaponName.Equals("ALCM-CALCM"))
+			if (B52.RWing.Equals(Gravity.WeaponName))
 			{
-				w = new Weapons("ALCM-CALCM", 30194);
-				rightWing = w.getWeight();
-				RightWeaponChoice.Text = weaponName;
+				B52.RWingWeight = Gravity.Weight;
 			}
 
-			if (weaponName.Equals("WCMD"))
+			//-----------------------------------------------------
+			if (B52.RWing.Equals(Jassm.WeaponName))
 			{
-				w = new Weapons("WCMD", 30194);
-				rightWing = w.getWeight();
-				RightWeaponChoice.Text = w.getName();
+				B52.RWingWeight = Jassm.Weight;
+			}
+
+			//-----------------------------------------------------
+			if (B52.RWing.Equals(Mald.WeaponName))
+			{
+				B52.RWingWeight = Mald.Weight;
 			}
 
 
-			if (weaponName.Equals("MALD"))
+			//-----------------------------------------------------
+			if (B52.RWing.Equals(Jdam.WeaponName))
 			{
-				w = new Weapons("MALD", 30194);
-				rightWing = w.getWeight();
-				RightWeaponChoice.Text = weaponName;
+				B52.RWingWeight = Jdam.Weight;
 			}
 
-			if (weaponName.Equals("JASSM"))
+			//-----------------------------------------------------
+			if (B52.RWing.Equals(Wcmd.WeaponName))
 			{
-				w = new Weapons("JASSM", 24946);
-				rightWing = w.getWeight();
-				RightWeaponChoice.Text = weaponName;
+				B52.RWingWeight = Wcmd.Weight;
 			}
 
-			if (weaponName.Equals("JDAM"))
+			//-----------------------------------------------------
+			if (B52.RWing.Equals(Alcm.WeaponName))
 			{
-				w = new Weapons("JDAM", 9722);
-				rightWing = w.getWeight();
-				RightWeaponChoice.Text = weaponName;
+				B52.RWingWeight = Alcm.Weight;
 			}
 
-			if (weaponName.Equals("Gravity"))
+			if (B52.RWing.Equals(Calcm.WeaponName))
 			{
-				w = new Weapons("Gravity", 7988);
-				rightWing = w.getWeight();
-				RightWeaponChoice.Text = weaponName;
-
+				B52.RWingWeight = Alcm.Weight;
 			}
-			return rightWing;
+
+            else
+            {
+				B52.RWingWeight = 0;
+            }
+
+			RightWeaponChoice.Text = B52.RWing;
+			return B52.RWingWeight;
 		}
 
 
 		public int bayChoice(string weaponName)
 		{
-			Weapons w = new Weapons();
 			MessageBoxResult result = new MessageBoxResult();
-			int bayWeight = 0;
-			if (weaponName.Equals("None"))
-				bayWeight = 0;
 
-			if (weaponName.Equals("ALCM-CALCM"))
+			if (B52.Bay.Equals("ALCM-CALCM"))
 			{
-				w = new Weapons("ALCM-CALCM", 30194);
-				bayWeight = w.getWeight();
-				bayWeaponChoice.Text = weaponName;
+				B52.BayWeight = Alcm.Weight;
+				bayWeaponChoice.Text = B52.Bay;
 			}
 
-			if (weaponName.Equals("WCMD"))
+			if (B52.Bay.Equals(Wcmd.WeaponName))
 			{
-				// error handling for  MALD that can't be loaded into bay.
+				// error handling for  WCMD that can't be loaded into bay.
 				result = MessageBox.Show("Error, cannot be loaded into bay", "Confirmation");
-				rightWing = 0;
-				leftWing = 0;
+				B52.RWingWeight = 0;
+				B52.LWingWeight = 0;
 				totalWeaponWeight.Text = nullWeight.ToString();
 			}
 
 
-			if (weaponName.Equals("MALD"))
+			if (B52.Bay.Equals(Mald.WeaponName))
 			{
 				// error handling for  MALD that can't be loaded into bay.
 				result = MessageBox.Show("Error, cannot be loaded into bay", "Confirmation");
-				rightWing = 0;
-				leftWing = 0;
+				B52.RWingWeight = 0;
+				B52.LWingWeight = 0;
 				totalWeaponWeight.Text = nullWeight.ToString();
 			}
 
-			if (weaponName.Equals("JASSM"))
+			if (B52.Bay.Equals(Jassm.WeaponName))
 			{
-				w = new Weapons("JASSM", 24946);
-				bayWeight = w.getWeight();
+				B52.BayWeight = Jassm.Weight;
+				bayWeaponChoice.Text = B52.Bay;
+			}
+
+			if (B52.Bay.Equals(Jdam.WeaponName))
+			{
+				B52.BayWeight = Jdam.Weight;
 				bayWeaponChoice.Text = weaponName;
 			}
 
-			if (weaponName.Equals("JDAM"))
+			if (B52.Bay.Equals(Gravity.WeaponName))
 			{
-				w = new Weapons("JDAM", 9722);
-				bayWeight = w.getWeight();
+				B52.BayWeight = Gravity.Weight;
 				bayWeaponChoice.Text = weaponName;
 			}
-
-			if (weaponName.Equals("Gravity"))
-			{
-				w = new Weapons("Gravity", 7988);
-				bayWeight = w.getWeight();
-				bayWeaponChoice.Text = weaponName;
-			}
-			return bayWeight;
+			return B52.BayWeight;
 		}
 
 		public int calcWeaponWeight(int rightWeight, int leftWeight, int backWeight)

@@ -9,13 +9,17 @@
         Title="MainWindow" Height="995.339" Width="1621.136" Background="SlateGray">
 
     <Grid Margin="0,0,2,-21">
-        <Image Source="images\b52.jpg" Width="837" Height="525" Margin="-108,0,882,460" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="286*"/>
+        </Grid.RowDefinitions>
+        <Image Source="images\b52.jpg" Width="837" Height="525" Margin="-107,1,882.4,460.6" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2" ></Image>
 
-        <Button Content="Ready to design B52?" Click="ButtonToB52DesignWindow" FontFamily="Arial" HorizontalAlignment="Left" Margin="280,662,0,305" VerticalAlignment="Center" Width="224" RenderTransformOrigin="0.373,0.5"/>
-        <Button Content="Exit" Click="ExitButton" FontFamily="Arial" HorizontalAlignment="Left" Margin="1484,922,0,29" VerticalAlignment="Center" Width="117" RenderTransformOrigin="0.373,0.5" Background="Red" Foreground="White" Height="34" ></Button>
-        <TextBlock HorizontalAlignment="Left" Margin="107,563,0,0" TextWrapping="Wrap" Text="Design and implement weapons systems and combinations for the B-52 Stratofortress!" VerticalAlignment="Top" Width="622" Height="34" FontSize="16"/>
-        <Image HorizontalAlignment="Left" Height="453" Margin="1026,72,-179,0" VerticalAlignment="Top" Width="764" Source="images/b2.jpg"/>
-        <Button Content="Ready to design B2?" HorizontalAlignment="Left" Margin="1354,662,0,0" VerticalAlignment="Top" Width="247" Click="B2Design"/>
-        <TextBlock HorizontalAlignment="Left" Margin="1063,563,-179,0" TextWrapping="Wrap" Text="Design and implement weapons systems and combinations for the B-2 Bomber!" VerticalAlignment="Top" Width="727" Height="34" FontSize="16"/>
+        <Button Content="Ready to design B52?" Click="ButtonToB52DesignWindow" FontFamily="Arial" HorizontalAlignment="Left" Margin="280,534.198,0,306.6" VerticalAlignment="Center" Width="224" RenderTransformOrigin="0.373,0.5" Grid.Row="1"/>
+        <Button Content="Exit" Click="ExitButton" FontFamily="Arial" HorizontalAlignment="Left" Margin="1484,794.198,0,29.6" VerticalAlignment="Center" Width="117" RenderTransformOrigin="0.373,0.5" Background="Red" Foreground="White" Height="34" Grid.Row="1" ></Button>
+        <TextBlock HorizontalAlignment="Left" Margin="107,434.198,0,0" TextWrapping="Wrap" Text="Design and implement weapons systems and combinations for the B-52 Stratofortress!" VerticalAlignment="Top" Width="622" Height="34" FontSize="16" Grid.Row="1"/>
+        <Image HorizontalAlignment="Left" Height="453" Margin="837,73,0,0" VerticalAlignment="Top" Width="764" Source="images/b2.jpg" Grid.RowSpan="2"/>
+        <Button Content="Ready to design B2?" HorizontalAlignment="Left" Margin="1354,533.198,0,0" VerticalAlignment="Top" Width="247" Click="B2Design" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1063,434.198,-177.6,0" TextWrapping="Wrap" Text="Design and implement weapons systems and combinations for the B-2 Bomber!" VerticalAlignment="Top" Width="727" Height="34" FontSize="16" Grid.Row="1"/>
     </Grid>
 </Window>
