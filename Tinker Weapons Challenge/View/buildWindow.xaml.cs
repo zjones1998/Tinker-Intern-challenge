@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Tinker_Weapons_Challenge.ViewModel;
+
 
 namespace Tinker_Weapons_Challenge
 {
@@ -36,6 +25,12 @@ namespace Tinker_Weapons_Challenge
         private void btnLtWing_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+			UserViewModel vm = (UserViewModel)DataContext;
+			MessageBox.Show(this, "B-52 Ready To Take Off");
         }
     }
 }

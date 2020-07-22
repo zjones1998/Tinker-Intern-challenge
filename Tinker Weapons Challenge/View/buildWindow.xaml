@@ -19,23 +19,26 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+
+
+
         <Border BorderThickness="0,2,5,1" BorderBrush="Black" Grid.Column="0"  Grid.RowSpan="2"/>
-        <Border BorderThickness="0,5,5,1" BorderBrush="Black" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"/>
+        <Border BorderThickness="0,5,5,1" BorderBrush="Black" Grid.Column="1" Grid.RowSpan="2" Margin="1,967,-0.714,-1.143"/>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <Image Source="images\b52Boxes.png" Height="900" Width="Auto" Margin="5,5,4.556,5" />
+            <Image Source="images\b52Boxes.png" Height="900" Width="Auto" Margin="5" />
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
             <Label x:Name="label" Grid.Row="0" Grid.Column="1" Content="B-52" Margin="0,30,950,5" Height="150" Width="350" FontWeight="Bold" FontSize="125" RenderTransformOrigin="0.475,-2.077" BorderBrush="Black" FontFamily="Times New Roman"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <Button x:Name="btnRtWing" Content="Right Wing" Height="70" Width="70" Margin="650,260,505.556,0" RenderTransformOrigin="0.681,1.422"/>
+            <ToggleButton IsChecked="{Binding Path=BtnRightWingSelected}" x:Name="btnRtWing" Content="Right Wing" Height="70" Width="90" Margin="650,260,505.556,0" RenderTransformOrigin="0.681,1.422"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <ToggleButton x:Name="btnLtWing" IsChecked="{Binding Path=BtnLeftWingSelected}" Content="Left Wing" Height="70" Width="70" Margin="330,260,505.556,0" RenderTransformOrigin="0.681,1.422" Click="btnLtWing_Click"/>
+            <ToggleButton x:Name="btnLtWing" IsChecked="{Binding Path=BtnLeftWingSelected}" Content="Left Wing" Height="70" Width="90" Margin="330,260,505.556,0" RenderTransformOrigin="0.681,1.422" Click="btnLtWing_Click"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <Button x:Name="btnBay" Content="Bay" Height="110" Width="45" Margin="490,400,505.556,0" RenderTransformOrigin="0.681,1.422"/>
+            <ToggleButton x:Name="btnBay" IsChecked="{Binding Path=BtnBaySelected}"  Content="Bay" Height="110" Width="45" Margin="490,400,505.556,0" RenderTransformOrigin="0.681,1.422"/>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="0">
             <Label x:Name="lblWeapons" Content="WEAPONS"  Margin="0,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Height="37" Width="Auto"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="LightGray"/>
@@ -53,25 +56,25 @@
                     <Label Height="Auto" FontFamily="Times New Roman" FontWeight="Bold" FontSize="15" VerticalAlignment="Stretch" HorizontalAlignment="Center">JASSM</Label>
                 </StackPanel>
             </Button>
-            <Button Background="Transparent" Height="150" Name="btnJdam" Margin="2,5,2,0">
+            <Button Command="{Binding Path=JdamCommand}" Background="Transparent" Height="150" Name="btnJdam" Margin="2,5,2,0">
                 <StackPanel>
                     <Image x:Name="imgJDAM" Source="images\JDAM.png" Height="115" Width="300" Margin="0,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.557,0.701"/>
                     <Label Height="Auto" FontFamily="Times New Roman" FontWeight="Bold" FontSize="15" VerticalAlignment="Stretch" HorizontalAlignment="Center">JDAM</Label>
                 </StackPanel>
             </Button>
-            <Button Background="Transparent" Height="150" Name="btnMald" Margin="2,5,2,0">
+            <Button Command="{Binding Path=MaldCommand}" Background="Transparent" Height="150" Name="btnMald" Margin="2,5,2,0">
                 <StackPanel>
                     <Image x:Name="imgMALD" Source="images\MALD.png" Height="115" Width="300" Margin="0,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.557,0.701"/>
                     <Label Height="Auto" FontFamily="Times New Roman" FontWeight="Bold" FontSize="15" VerticalAlignment="Stretch" HorizontalAlignment="Center">MALD</Label>
                 </StackPanel>
             </Button>
-            <Button Background="Transparent" Height="150" Name="btnWcmd" Margin="2,5,2,0">
+            <Button Command ="{Binding Path=WcmdCommand}" Background="Transparent" Height="150" Name="btnWcmd" Margin="2,5,2,0">
                 <StackPanel>
                     <Image x:Name="imgWCMD" Source="images\WCMD.png" Height="115" Width="300" Margin="0,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.557,0.701"/>
                     <Label Height="Auto" FontFamily="Times New Roman" FontWeight="Bold" FontSize="15" VerticalAlignment="Stretch" HorizontalAlignment="Center">WCMD</Label>
                 </StackPanel>
             </Button>
-            <Button Background="Transparent" Height="150" Name="btnCalcm" Margin="2,5,2,1" VerticalAlignment="Top">
+            <Button Command="{Binding Path=CalcmCommand}" Background="Transparent" Height="150" Name="btnCalcm" Margin="2,5,2,1" VerticalAlignment="Top">
                 <StackPanel>
                     <Image x:Name="imgCALCM" Source="images\ALCM-CALCM.png" Height="115" Width="300" Margin="0,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.557,0.701"/>
                     <Label Height="Auto" FontFamily="Times New Roman" FontWeight="Bold" FontSize="15" VerticalAlignment="Stretch" HorizontalAlignment="Center">CALCM</Label>
@@ -79,7 +82,7 @@
             </Button>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <Button Background="Transparent" Height="150" Name="btnAlcm" Margin="2,7,2,0">
+            <Button Command="{Binding Path=AlcmCommand}" Background="Transparent" Height="150" Name="btnAlcm" Margin="2,7,2,0">
                 <StackPanel>
                     <Image x:Name="imgALCM" Source="images\ALCM.gif" Height="110" Width="300" Margin="0,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.557,0.701"/>
                     <Label Height="Auto" FontFamily="Times New Roman" FontWeight="Bold" FontSize="15" VerticalAlignment="Stretch" HorizontalAlignment="Center">ALCM</Label>
@@ -87,7 +90,7 @@
             </Button>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0.571,0.286,3.429">
-            <Grid Height="163" Margin="5,0,4,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top">
+            <Grid Height="201" Margin="5,0,3.714,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top">
                 <Grid.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -108,20 +111,20 @@
                 <Label x:Name="lblLfWing" Content="Left Wing" HorizontalAlignment="Left" Margin="20,40,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
                 <Label x:Name="lblRtWing" Content="Right Wing" HorizontalAlignment="Left" Margin="20,80,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
                 <Label x:Name="lblBay" Content="Bay" HorizontalAlignment="Left" Margin="20,120,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
-                <TextBox x:Name="qtTxtLtW" HorizontalAlignment="Left" Height="30" Width="80" Margin="300,80,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBox" VerticalAlignment="Top" BorderThickness="2"/>
                 <TextBox Text="{Binding Path=LeftWingQt}" x:Name="qtTxtRtW"   HorizontalAlignment="Left" Height="30" Width="80" Margin="300,40,0,0" TextWrapping="Wrap" FontSize="18"  VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
-                <TextBox x:Name="qtTxtBay" HorizontalAlignment="Left" Height="30" Width="80" Margin="300,120,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBox" VerticalAlignment="Top" BorderThickness="2"/>
-                <TextBox x:Name="txtLtWeapon" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,40,0,0" TextWrapping="Wrap" FontSize="18" Text="{Binding Path=LeftWingWeapon}" VerticalAlignment="Top" BorderThickness="2"/>
-                <TextBox x:Name="txtRtWeapon" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,80,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBox" VerticalAlignment="Top" BorderThickness="2"/>
-                <TextBox x:Name="txtBay" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,120,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBox" VerticalAlignment="Top" BorderThickness="2"/>
-                <Button x:Name="btnLoad" Content="LOAD" Grid.Column="1" Margin="19.556,120,0,0" Width="332" BorderThickness="2" FontSize="18" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding Path=RightWingQt}" x:Name="qtTxtLtW" HorizontalAlignment="Left" Width="80" Margin="300,80,0,53" TextWrapping="Wrap" FontSize="18" BorderBrush="#FF31333B" BorderThickness="2"/>
+                <TextBox Text="{Binding Path=BayQt}" x:Name="qtTxtBay" HorizontalAlignment="Left" Height="30" Width="80" Margin="300,120,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
+                <TextBox x:Name="txtLtWeapon" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,40,0,0" TextWrapping="Wrap" FontSize="18" Text="{Binding Path=LeftWingWeapon}" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
+                <TextBox  Text="{Binding Path=RightWingWeapon}" x:Name="txtRtWeapon" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,80,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
+                <TextBox x:Name="txtBay"  Text="{Binding Path=BayWeapon}" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,120,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
+                <Button x:Name="btnLoad" Content="LOAD" Grid.Column="1" Margin="19.556,120,0,0" Width="332" BorderThickness="2" FontSize="18" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Click="btnLoad_Click"/>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Left"/>
                 <Label x:Name="label1" Content="Empty B-52 Weigh 185,000lbs" Grid.Column="1" Margin="0,120,80,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Right"/>
                 <Label x:Name="lblAvaFuel" Content="Available Fuel" Grid.Column="1" HorizontalAlignment="Left" Margin="20,5,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
                 <Label x:Name="lblAddFuel" Content="Add Fuel 100,000lbs" Grid.Column="1" HorizontalAlignment="Left" Margin="20,40,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
                 <Label x:Name="lblTotalWeight" Content="Total Weight,lbs :" Grid.Column="1" HorizontalAlignment="Left" Margin="20,80,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
                 <TextBox x:Name="txtBAvailableFuel" Grid.Column="1" HorizontalAlignment="Left" Height="30" Width="350" Margin="425,5,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBox" VerticalAlignment="Top" BorderThickness="2"/>
-                <TextBox x:Name="txtBTotalWeight" Grid.Column="1" HorizontalAlignment="Left" Height="30" Width="350" Margin="425,80,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBox" VerticalAlignment="Top" BorderThickness="2"/>
+                <TextBox x:Name="txtBTotalWeight" Text="{Binding Path=TotalWeight}" Grid.Column="1" HorizontalAlignment="Left" Height="30" Width="350" Margin="425,80,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderThickness="2"/>
                 <Slider x:Name="sliderFuel" Height="35" Width="350" Grid.Column="1" Margin="426,40,0,0" VerticalAlignment="Top" Background="#FFA79E9E" Ticks="100000,300000"/>
             </Grid>
         </StackPanel>

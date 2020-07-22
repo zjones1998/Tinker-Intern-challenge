@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Tinker_Weapons_Challenge.ViewModel;
 
 namespace Tinker_Weapons_Challenge.Model
 {
     public static class CraftWeaponsDatabase
     {
-
         public static List<AirCraft> airCraftsList = new List<AirCraft>()          //create list of Air Crafts
         {
             new AirCraft { nameAirCraft = "B-52",initAirCraftWeight = 185000 },  //initializing fuel level is optional
            
-             new AirCraft { nameAirCraft = "B-21", initAirCraftWeight =135600}
+             //new AirCraft { nameAirCraft = "B-21", initAirCraftWeight =135600}
         };
 
         
@@ -31,6 +30,8 @@ namespace Tinker_Weapons_Challenge.Model
 
         };
 
+        
+
         //create new weapons list or new weapons can be added to the above list as well
 
         public static List<AirCraft> ReturnCraftList()          //returns AirCraft lists
@@ -42,5 +43,13 @@ namespace Tinker_Weapons_Challenge.Model
         {
             return weaponList;
         }
+
+
+
+
+        /*
+         We add hear and run the test 
+         */
+
     }
 }
