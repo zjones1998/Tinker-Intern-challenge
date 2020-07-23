@@ -70,6 +70,10 @@
     <Compile Include="Model\Fuel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
+    <Page Include="View\B2buildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\buildWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +85,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\B2buildWindow.xaml.cs">
+      <DependentUpon>B2buildWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\buildWindow.xaml.cs">
       <DependentUpon>buildWindow.xaml</DependentUpon>
@@ -133,8 +140,12 @@
   <ItemGroup>
     <Resource Include="View\images\ALCM.gif" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="CSV\" />
+    <Resource Include="View\images\b2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CSV\planeSaveFile.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

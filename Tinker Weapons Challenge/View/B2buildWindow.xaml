@@ -1,0 +1,16 @@
+﻿<Window x:Class="Tinker_Weapons_Challenge.B2buildWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tinker_Weapons_Challenge"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="B2 Builder" Height="995.339" Width="1621.136" Background="White">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="38,35,0,0" TextWrapping="Wrap" Text="The Northrop (later Northrop Grumman) B-2 Spirit, also known as the Stealth Bomber, is an American heavy strategic bomber, featuring low observable stealth technology designed for penetrating dense anti-aircraft defenses; it is a flying wing design with a crew of two.[1][4] The bomber can deploy both conventional and thermonuclear weapons, such as up to eighty 500-pound class (230 kg) Mk 82 JDAM Global Positioning System-guided bombs, or sixteen 2,400-pound (1,100 kg) B83 nuclear bombs. The B-2 is the only acknowledged aircraft that can carry large air-to-surface standoff weapons in a stealth configuration." VerticalAlignment="Top" Height="51"/>
+        <TextBlock HorizontalAlignment="Left" Margin="665,257,0,0" TextWrapping="Wrap" Text="This page has not been constructed yet!" VerticalAlignment="Top"/>
+        <Button Content="Return to Home" HorizontalAlignment="Left" Margin="685,508,0,0" VerticalAlignment="Top" Width="192" Height="118" Click="HomeButton" Background="#FF0046FF"/>
+
+    </Grid>
+</Window>
