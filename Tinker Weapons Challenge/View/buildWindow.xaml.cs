@@ -118,7 +118,7 @@ namespace Tinker_Weapons_Challenge
 		private void PDFSave(object sender, RoutedEventArgs e)
 		{
 			CaptureScreen();
-			string srcFilename = @"C:\\Users\\Zach\\Desktop\\ScreenCapture.png";
+			string srcFilename = @"ScreenCapture.png";
 			string dstFilename = @"SavePlane.pdf";
 
 			iTextSharp.text.Rectangle pageSize = null;
@@ -155,7 +155,7 @@ namespace Tinker_Weapons_Challenge
 
 			g.CopyFromScreen(screenLeft, screenTop, 0, 0, screen.Size);
 
-			screen.Save(@"C:\\Users\\Zach\\Desktop\\" + filename);
+			screen.Save(@filename);
 		}
 
 	}
