@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.IO;
 using System.Windows;
+using Tinker_Weapons_Challenge.Model;
 using Tinker_Weapons_Challenge.ViewModel;
 
 
@@ -12,15 +14,13 @@ namespace Tinker_Weapons_Challenge
 	/// </summary>
 	public partial class buildWindow : Window
 	{
-		
-		
-
+		int baywt;
+		int leftwt;
+		int rightwt;
 		public buildWindow()
 		{
 			DataContext = new UserViewModel();
 			InitializeComponent();
-			
-
 		}
 
         private void btnLtWing_Click(object sender, RoutedEventArgs e)
@@ -48,7 +48,34 @@ namespace Tinker_Weapons_Challenge
 
 		private void SaveButton(object sender, RoutedEventArgs e)
 		{
-			addRecord("Gravity", "MALD", "Gravity", 23000, 100000, 100, 100, "planeSaveFile.txt");
+			int baywt = int.Parse(wtTxtBay.Text);
+			int leftwt = int.Parse(wtTxtLtW.Text);
+			int rightwt = int.Parse(wtTxtRtW.Text);
+
+			AirWeapons left = new AirWeapons(txtLtWeapon.Text, leftwt);
+			AirWeapons right = new AirWeapons(txtRtWeapon.Text, rightwt);
+			AirWeapons bay = new AirWeapons(txtBay.Text, baywt);
+
+			if (txtLtWeapon.Text.Equals("Select Weapon"))
+				left = new AirWeapons("none", 0);
+
+			else if (txtRtWeapon.Text.Equals("Select Weapon"))
+				right = new AirWeapons("none", 0);
+
+			else if (txtBay.Text.Equals("Select Weapon"))
+				bay = new AirWeapons("none", 0);
+
+			else
+			{
+				left = new AirWeapons(txtLtWeapon.Text, leftwt);
+				right = new AirWeapons(txtRtWeapon.Text, rightwt);
+				bay = new AirWeapons(txtBay.Text, baywt);
+			}
+
+			int total = left.getWeight() + bay.getWeight() + right.getWeight();
+
+			addRecord(left.getName(), bay.getName(), right.getName(),total ,leftwt, baywt, rightwt, "planeSaveFile.txt");
+			MessageBox.Show("File has been saved!", "File Confirm");
 		}
 
 		public static void addRecord(string left, string bay, string right, int totalWeight, int leftWeight, int bayWeight, int rightWeight, string filepath)
@@ -57,7 +84,7 @@ namespace Tinker_Weapons_Challenge
 			{
 				using (System.IO.StreamWriter file = new System.IO.StreamWriter(filepath, true))
 				{
-					file.WriteLine(left + "," + bay + "," + right + "," + totalWeight.ToString() + "," + leftWeight.ToString() + "," + rightWeight.ToString());
+					file.WriteLine(left + "," + bay + "," + right + "," + totalWeight.ToString() + "," + leftWeight.ToString() + "," + bayWeight.ToString() + "," + rightWeight.ToString());
 				}
 			}
 			catch(Exception ex)
@@ -72,5 +99,8 @@ namespace Tinker_Weapons_Challenge
 			mw.Show();
 			this.Close();
 		}
+
+
+		
 	}
 }
