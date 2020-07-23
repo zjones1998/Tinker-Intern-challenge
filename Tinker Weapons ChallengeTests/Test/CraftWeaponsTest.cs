@@ -87,7 +87,7 @@ namespace Tinker_Weapons_Challenge.Model.Tests
         {
             
             int B52 = 185000;       //empty plane weigh
-            int LeftWingLoaded = 3 * 7988;  //Gravity weigh added to the Left Wing
+            int LeftWingLoaded = 7988;  //Gravity weigh added to the Left Wing
             int RightWingLoaded = 30194; //ALCM weigh added to the Right Wing
             int BayLoaded = 0;
             int FuelAdded = 150000;     //fuel weigh added to the plane

@@ -110,9 +110,9 @@
                 <Label x:Name="lblRtWing" Content="Right Wing" HorizontalAlignment="Left" Margin="20,80,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
                 <Label x:Name="lblBay" Content="Bay" HorizontalAlignment="Left" Margin="20,120,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
 
-                <TextBox Text="{Binding Path=LeftWingWt}" x:Name="wtTxtLtW"   HorizontalAlignment="Left" Height="30" Width="113" Margin="267,0,0,131" TextWrapping="Wrap" FontSize="18"  VerticalAlignment="Bottom" BorderBrush="#FF31333B" BorderThickness="2"/>
-                <TextBox Text="{Binding Path=RightWingWt}" x:Name="wtTxtRtW" HorizontalAlignment="Left" Width="113" Margin="267,80,0,91" TextWrapping="Wrap" FontSize="18" BorderBrush="#FF31333B" BorderThickness="2"/>
-                <TextBox Text="{Binding Path=BayWt}" x:Name="wtTxtBay" HorizontalAlignment="Left" Height="30" Width="113" Margin="267,120,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
+                <TextBox Text="{Binding Path=LeftWingQt}" x:Name="wtTxtLtW"   HorizontalAlignment="Left" Height="30" Width="113" Margin="267,0,0,131" TextWrapping="Wrap" FontSize="18"  VerticalAlignment="Bottom" BorderBrush="#FF31333B" BorderThickness="2"/>
+                <TextBox Text="{Binding Path=RightWingQt}" x:Name="wtTxtRtW" HorizontalAlignment="Left" Width="113" Margin="267,80,0,91" TextWrapping="Wrap" FontSize="18" BorderBrush="#FF31333B" BorderThickness="2"/>
+                <TextBox Text="{Binding Path=BayQt}" x:Name="wtTxtBay" HorizontalAlignment="Left" Height="30" Width="113" Margin="267,120,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
                 <TextBox x:Name="txtLtWeapon" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,40,0,0" TextWrapping="Wrap" FontSize="18" Text="{Binding Path=LeftWingWeapon}" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
                 <TextBox  Text="{Binding Path=RightWingWeapon}" x:Name="txtRtWeapon" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,80,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
                 <TextBox x:Name="txtBay"  Text="{Binding Path=BayWeapon}" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,120,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>

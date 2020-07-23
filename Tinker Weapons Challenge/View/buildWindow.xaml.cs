@@ -46,7 +46,7 @@ namespace Tinker_Weapons_Challenge
         {
 			MessageBoxResult result = MessageBox.Show("Fuel Has Been Added", "NOTIFICATION");
         }
-    }
+    
 
 		private void ExitButton(object sender, RoutedEventArgs e)
 		{
