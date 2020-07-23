@@ -61,9 +61,9 @@ namespace Tinker_Weapons_Challenge.Model.Tests
         }
                         
         /*              
-         Checks if the list in the database file is correctly passed
-         to ViewModel class 
-         */
+        Checks if the list in the database file is correctly passed
+        to ViewModel class 
+        */
         [TestMethod()]
         public void WeaponListTest()        
         {
@@ -80,7 +80,7 @@ namespace Tinker_Weapons_Challenge.Model.Tests
 
         /*
             This Test demonstrate if the inteded weapon has been loaded to the 
-            right place of the plane we wanted 
+            right place of the Air Craft we wanted 
         */
         [TestMethod()]                  
         public void TotalWeaponLoadTest()
@@ -100,9 +100,51 @@ namespace Tinker_Weapons_Challenge.Model.Tests
             Assert.AreEqual(LoadedPlaneWeight, weighB52, "result did not pass");
 
         }
+
+
+        //This will check a value inside the range of the plane, and will require over 100,000 tons of fuel.
+        [TestMethod]
+
+        public void TestMethod1()
+        {
+            Fuel F = new Fuel();
+            int distance = 2895;
+            int range = 4825;
+            int maxFuel = 300000;
+            decimal FuelNeeded = F.fuel_calc(distance, range, maxFuel);
+            decimal ExpectedFuel = 180000;
+            Assert.AreEqual<decimal>(ExpectedFuel, FuelNeeded);
+        }
+
+        //This will check the minimum value of fuel will be correctly set as 100,000.
+        [TestMethod]
+        public void TestMethod2()
+        {
+            Fuel F = new Fuel();
+            int distance = 0;
+            int range = 4825;
+            int maxFuel = 300000;
+            decimal FuelNeeded = F.fuel_calc(distance, range, maxFuel);
+            decimal ExpectedFuel = 100000;
+            Assert.AreEqual<decimal>(ExpectedFuel, FuelNeeded);
+        }
+
+       
+
+        /*
+        [TestMethod]
+        public void TestMethod4()
+        {
+            int RWingTest = 5000;
+            int LWingTest = 5000;
+            int BTest = 5000;
+            int actualWeight = calcWeaponWeight(RWingTest, LWingTest, BTest);
+            expectedWeight = 15000;
+            Assert.AreEqual<int>(actualWeight, expectedWeight);
+        }
+        */
+
+
     }
-
-
-    
-    
+  
 }  

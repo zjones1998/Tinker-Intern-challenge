@@ -67,6 +67,7 @@
     <Compile Include="Model\AirCraft.cs" />
     <Compile Include="Model\CraftWeaponsDatabase.cs" />
     <Compile Include="Model\AirWeapons.cs" />
+    <Compile Include="Model\Fuel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\UserViewModel.cs" />
     <Page Include="View\B2buildWindow.xaml">

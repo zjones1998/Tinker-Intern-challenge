@@ -14,11 +14,18 @@ namespace Tinker_Weapons_Challenge
 	/// </summary>
 	public partial class buildWindow : Window
 	{
+
+
 		int baywt;
 		int leftwt;
 		int rightwt;
+
 		public buildWindow()
 		{
+			/*
+			DataContext is the main object that is now bound to the View model
+			this will help binding of any attributes in View with the ViewModel properties
+			*/
 			DataContext = new UserViewModel();
 			InitializeComponent();
 		}
@@ -33,6 +40,13 @@ namespace Tinker_Weapons_Challenge
 			UserViewModel vm = (UserViewModel)DataContext;
 			MessageBox.Show(this, "B-52 Ready To Take Off");
         }
+
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+			MessageBoxResult result = MessageBox.Show("Fuel Has Been Added", "NOTIFICATION");
+        }
+    }
 
 		private void ExitButton(object sender, RoutedEventArgs e)
 		{
@@ -103,4 +117,5 @@ namespace Tinker_Weapons_Challenge
 
 		
 	}
+
 }
