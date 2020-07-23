@@ -19,9 +19,6 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-
-
-
         <Border BorderThickness="0,2,5,1" BorderBrush="Black" Grid.Column="0"  Grid.RowSpan="2"/>
         <Border BorderThickness="0,5,5,1" BorderBrush="Black" Grid.Column="1" Grid.RowSpan="2" Margin="1,967,-0.714,-1.143"/>
 
@@ -112,7 +109,7 @@
                 <Label x:Name="lblRtWing" Content="Right Wing" HorizontalAlignment="Left" Margin="20,80,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
                 <Label x:Name="lblBay" Content="Bay" HorizontalAlignment="Left" Margin="20,120,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
                 <TextBox Text="{Binding Path=LeftWingQt}" x:Name="qtTxtRtW"   HorizontalAlignment="Left" Height="30" Width="80" Margin="300,40,0,0" TextWrapping="Wrap" FontSize="18"  VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
-                <TextBox Text="{Binding Path=RightWingQt}" x:Name="qtTxtLtW" HorizontalAlignment="Left" Width="80" Margin="300,80,0,53" TextWrapping="Wrap" FontSize="18" BorderBrush="#FF31333B" BorderThickness="2"/>
+                <TextBox Text="{Binding Path=RightWingQt}" x:Name="qtTxtLtW" HorizontalAlignment="Left" Width="80" Margin="300,80,0,53" TextWrapping="Wrap" FontSize="18" BorderBrush="#FF31333B" BorderThickness="2" Height="30" VerticalAlignment="Top"/>
                 <TextBox Text="{Binding Path=BayQt}" x:Name="qtTxtBay" HorizontalAlignment="Left" Height="30" Width="80" Margin="300,120,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
                 <TextBox x:Name="txtLtWeapon" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,40,0,0" TextWrapping="Wrap" FontSize="18" Text="{Binding Path=LeftWingWeapon}" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
                 <TextBox  Text="{Binding Path=RightWingWeapon}" x:Name="txtRtWeapon" HorizontalAlignment="Left" Height="30" Width="250" Margin="425,80,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderBrush="#FF31333B" BorderThickness="2"/>
@@ -121,11 +118,12 @@
                 <StackPanel Grid.Column="1" HorizontalAlignment="Left"/>
                 <Label x:Name="label1" Content="Empty B-52 Weigh 185,000lbs" Grid.Column="1" Margin="0,120,80,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Right"/>
                 <Label x:Name="lblAvaFuel" Content="Available Fuel" Grid.Column="1" HorizontalAlignment="Left" Margin="20,5,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
-                <Label x:Name="lblAddFuel" Content="Add Fuel 100,000lbs" Grid.Column="1" HorizontalAlignment="Left" Margin="20,40,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
+                <Label x:Name="lblAddFuel" Content="Add Fuel 100,000 - 300,000 in lbs" Grid.Column="1" HorizontalAlignment="Left" Margin="20,40,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
                 <Label x:Name="lblTotalWeight" Content="Total Weight,lbs :" Grid.Column="1" HorizontalAlignment="Left" Margin="20,80,0,0" FontWeight="Bold" FontSize="18" VerticalAlignment="Top"/>
-                <TextBox x:Name="txtBAvailableFuel" Grid.Column="1" HorizontalAlignment="Left" Height="30" Width="350" Margin="425,5,0,0" TextWrapping="Wrap" FontSize="18" Text="TextBox" VerticalAlignment="Top" BorderThickness="2"/>
+                <TextBox x:Name="txtBAvailableFuel" Text="{Binding Path=UpdateFuelTB}"  Grid.Column="1" HorizontalAlignment="Left" Height="30" Width="350" Margin="425,5,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderThickness="2" />
                 <TextBox x:Name="txtBTotalWeight" Text="{Binding Path=TotalWeight}" Grid.Column="1" HorizontalAlignment="Left" Height="30" Width="350" Margin="425,80,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderThickness="2"/>
-                <Slider x:Name="sliderFuel" Height="35" Width="350" Grid.Column="1" Margin="426,40,0,0" VerticalAlignment="Top" Background="#FFA79E9E" Ticks="100000,300000"/>
+                <TextBox Text="{Binding Path=FuelFromTB}" x:Name="txtBAvailableFuel_Copy" Grid.Column="1" HorizontalAlignment="Left" Height="30" Width="200" Margin="425,42,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" BorderThickness="2"/>
+                <Button x:Name="button" Content="ADD" Grid.Column="1" HorizontalAlignment="Left" Margin="697,42,-12.429,0" VerticalAlignment="Top" Width="75" Height="30" Click="button_Click"/>
             </Grid>
         </StackPanel>
         <Slider x:Name="slider" HorizontalAlignment="Left" VerticalAlignment="Top"/>

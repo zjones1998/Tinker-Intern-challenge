@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using Tinker_Weapons_Challenge.Model;
@@ -31,17 +33,21 @@ namespace Tinker_Weapons_Challenge.ViewModel
         private string _RightWingWeapon = "  Select Weapon";
         private string _BayWeapon = "  Select Weapon";
 
-        //holds the number of weapon quantity selected
-        private int _LeftWingQt = 0;
-        private int _RightWingQt = 0;
-        private int _BayQt = 0;
-
+        
         //holds the total weight of the plane
         private int _RightWingWeaponWeight = 0;
         private int _LeftWingWeaponWeight = 0;
         private int _BayWeaponWeight = 0;
         private int _TotalWeight = 0;
         //private int _AvailableFuel = 0;
+        private int _UpdateFuelTB = 0;
+        private int _FuelFromTB = 0;
+        private int _LeftWingWeight = 0;
+        private int _RightWingWeight = 0;
+        private int _BayWeight = 0;
+
+
+
 
         //will hold the flag for the leftwing button
         private bool _LeftWingSelected = false;     
@@ -63,8 +69,35 @@ namespace Tinker_Weapons_Challenge.ViewModel
             _WcmdCommand = new RelayCommand(o => true, o => AddWcmdWeapon());
             _CalcmCommand = new RelayCommand(o => true, o => AddCalcmWeapon());
             _AlcmCommand = new RelayCommand(o => true, o => AddAlcmWeapon());
-
+       
         }
+
+
+        
+        //property for update fuel text box after added to AirCraft
+        public int UpdateFuelTB
+        {
+            get { return _FuelFromTB; }
+            set
+            {
+                this._FuelFromTB = value;
+                System.Diagnostics.Debug.WriteLine(_FuelFromTB); /**/
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("UpdateFuelTB")); /**/
+            }
+        }
+
+        //property for the Fuel Add text box
+        public int FuelFromTB
+        {
+            get { return _FuelFromTB; }
+            set
+            {
+                this._FuelFromTB = value;
+                System.Diagnostics.Debug.WriteLine(_FuelFromTB);
+                UpdateTotalWeight();
+            }
+        }
+
 
         //holds the property for the Bay button
         public bool BtnBaySelected
@@ -100,12 +133,12 @@ namespace Tinker_Weapons_Challenge.ViewModel
         //setting up the property for the Bay quantity text box
         public int BayQt
         {
-            get { return _BayQt; }
+            get { return _BayWeight; }
 
             set
             {
-                this._BayQt = value;
-                System.Diagnostics.Debug.WriteLine(_BayQt); /**/
+                this._BayWeight = value;
+                System.Diagnostics.Debug.WriteLine(_BayWeight); /**/
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(BayQt)));
             }
         }
@@ -156,12 +189,12 @@ namespace Tinker_Weapons_Challenge.ViewModel
         //setting up property for the LeftWingQuantity text box
         public int LeftWingQt
         {
-            get { return _LeftWingQt; }
+            get { return _LeftWingWeight; }
 
             set
             {
-                this._LeftWingQt = value;
-                System.Diagnostics.Debug.WriteLine(_LeftWingQt); /**/
+                this._LeftWingWeight = value;
+                System.Diagnostics.Debug.WriteLine(_LeftWingWeight); /**/
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LeftWingQt")); /**/
             }
         }
@@ -205,11 +238,11 @@ namespace Tinker_Weapons_Challenge.ViewModel
 
         public int RightWingQt
         {
-            get { return _RightWingQt; }
+            get { return _RightWingWeight; }
             set
             {
-                this._RightWingQt = value;
-                System.Diagnostics.Debug.WriteLine(_RightWingQt); /**/
+                this._RightWingWeight = value;
+                System.Diagnostics.Debug.WriteLine(_RightWingWeight); /**/
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RightWingQt")); /**/
             }
         }
@@ -223,13 +256,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (LeftWingWeapon != "ALCM")
                 {
                     LeftWingWeapon = WeaponList[6].getName();   //returns the name of weapon
-                    LeftWingQt = 1;
+                    LeftWingQt = WeaponList[6].getWeight();
                 }
                 //else
                 //{
                 //    LeftWingQt += 1;
                 //}
-                _LeftWingWeaponWeight = LeftWingQt * WeaponList[6].getWeight(); //calculates weight
+                _LeftWingWeaponWeight = WeaponList[6].getWeight();  //calculates weight
                
             }
             if (BtnRightWingSelected)
@@ -237,26 +270,26 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (RightWingWeapon != "ALCM")
                 {
                     RightWingWeapon = WeaponList[6].getName();
-                    RightWingQt = 1;
+                    RightWingQt = WeaponList[6].getWeight();
                 }
                 //else
                 //{
                 //    RightWingQt += 1;
                 //}
-                _RightWingWeaponWeight = RightWingQt * WeaponList[6].getWeight();
+                _RightWingWeaponWeight = WeaponList[6].getWeight();
             }
             if (BtnBaySelected)
             {
                 if (BayWeapon != "ALCM")
                 {
                     BayWeapon = WeaponList[6].getName();
-                    BayQt = 1;
+                    BayQt = WeaponList[6].getWeight();
                 }
                 //else
                 //{
                 //    BayQt += 1;
                 //}
-                _BayWeaponWeight = BayQt * WeaponList[6].getWeight();
+                _BayWeaponWeight = WeaponList[6].getWeight();
             }
             UpdateTotalWeight();
         }
@@ -270,39 +303,39 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (LeftWingWeapon != "CALCM")
                 {
                     LeftWingWeapon = WeaponList[5].getName();
-                    LeftWingQt = 1;
+                    LeftWingQt = WeaponList[5].getWeight();
                 }
                 //else
                 //{
                 //    LeftWingQt += 1;
                 //}
-                _LeftWingWeaponWeight = LeftWingQt * WeaponList[5].getWeight();
+                _LeftWingWeaponWeight = WeaponList[5].getWeight();
             }
             if (BtnRightWingSelected)
             {
                 if (RightWingWeapon != "CALCM")
                 {
                     RightWingWeapon = WeaponList[5].getName();
-                    RightWingQt = 1;
+                    RightWingQt = WeaponList[5].getWeight();
                 }
                 //else
                 // {
                 //    RightWingQt += 1;
                 //}
-                _RightWingWeaponWeight = RightWingQt * WeaponList[5].getWeight();
+                _RightWingWeaponWeight = WeaponList[5].getWeight();
             }
             if (BtnBaySelected)
             {
                 if (BayWeapon != "CALCM")
                 {
                     BayWeapon = WeaponList[5].getName();
-                    BayQt = 1;
+                    BayQt = WeaponList[5].getWeight();
                 }
                 //else
                 //{
                 //    BayQt += 1;
                 //}
-                _BayWeaponWeight = BayQt * WeaponList[5].getWeight();
+                _BayWeaponWeight = WeaponList[5].getWeight();
             }
             UpdateTotalWeight();
         }
@@ -315,13 +348,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (LeftWingWeapon != "WCMD")
                 {
                     LeftWingWeapon = WeaponList[4].getName();
-                    LeftWingQt = 1;
+                    LeftWingQt = WeaponList[4].getWeight();
                 }
                 //else
                 //{
                 //    LeftWingQt += 1;
                 //}
-                _LeftWingWeaponWeight = LeftWingQt * WeaponList[4].getWeight();
+                _LeftWingWeaponWeight = WeaponList[4].getWeight();
 
             }
             if (BtnRightWingSelected)
@@ -329,13 +362,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (RightWingWeapon != "WCMD")
                 {
                     RightWingWeapon = WeaponList[4].getName();
-                    RightWingQt = 1;
+                    RightWingQt = WeaponList[4].getWeight();
                 }
                 //else
                 //{
                 //    RightWingQt += 1;
                 //}
-                _RightWingWeaponWeight = RightWingQt * WeaponList[4].getWeight();
+                _RightWingWeaponWeight = WeaponList[4].getWeight();
             }
             if (BtnBaySelected)
             {
@@ -355,26 +388,26 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (LeftWingWeapon != "MALD")
                 {
                     LeftWingWeapon = WeaponList[3].getName();
-                    LeftWingQt = 1;
+                    LeftWingQt = WeaponList[3].getWeight();
                 }
                 //else
                 //{
                 //    LeftWingQt += 1;
                 //}
-                _LeftWingWeaponWeight = LeftWingQt * WeaponList[3].getWeight();
+                _LeftWingWeaponWeight = WeaponList[3].getWeight();
             }
             if (BtnRightWingSelected)
             {
                 if (RightWingWeapon != "MALD")
                 {
                     RightWingWeapon = WeaponList[3].getName();
-                    RightWingQt = 1;
+                    RightWingQt = WeaponList[3].getWeight();
                 }
                 //else
                 //{
                  //   RightWingQt += 1;
                 //}
-                _RightWingWeaponWeight = RightWingQt * WeaponList[3].getWeight();
+                _RightWingWeaponWeight = WeaponList[3].getWeight();
             }
             if (BtnBaySelected)
             {
@@ -395,13 +428,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (LeftWingWeapon != "JDAM")
                 {
                     LeftWingWeapon = WeaponList[2].getName();
-                    LeftWingQt = 1;
+                    LeftWingQt = WeaponList[2].getWeight();
                 }
                 // else
                 //{
                 //    LeftWingQt += 1;
                 //}
-                _LeftWingWeaponWeight = LeftWingQt * WeaponList[2].getWeight();
+                _LeftWingWeaponWeight = WeaponList[2].getWeight();
 
             }
             if (BtnRightWingSelected)
@@ -409,13 +442,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (RightWingWeapon != "JDAM")
                 {
                     RightWingWeapon = WeaponList[2].getName();
-                    RightWingQt = 1;
+                    RightWingQt = WeaponList[2].getWeight();
                 }
                //else
                 //{
                 //    RightWingQt += 1;
                 //}
-                _RightWingWeaponWeight = RightWingQt * WeaponList[2].getWeight();
+                _RightWingWeaponWeight = WeaponList[2].getWeight();
 
             }
             if (BtnBaySelected)
@@ -423,13 +456,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (BayWeapon != "JDAM")
                 {
                     BayWeapon = WeaponList[2].getName();
-                    BayQt = 1;
+                    BayQt = WeaponList[2].getWeight();
                 }
                 //else
                 //{
                 //    BayQt += 1;
                 //}
-                _BayWeaponWeight = BayQt * WeaponList[2].getWeight();
+                _BayWeaponWeight = WeaponList[2].getWeight();
             }
             UpdateTotalWeight();
         }
@@ -444,13 +477,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if(LeftWingWeapon != "Gravity")
                 {
                     LeftWingWeapon = WeaponList[0].getName();
-                    LeftWingQt = 1;
+                    LeftWingQt = WeaponList[0].getWeight();
                 }
                // else
                // {
                 //    LeftWingQt = 1;
                 //}
-                _LeftWingWeaponWeight = LeftWingQt * WeaponList[0].getWeight();
+                _LeftWingWeaponWeight = WeaponList[0].getWeight();
                 
             }
             if (BtnRightWingSelected)
@@ -458,13 +491,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (RightWingWeapon != "Gravity")
                 {
                     RightWingWeapon = WeaponList[0].getName();
-                    RightWingQt = 1;
+                    RightWingQt = WeaponList[0].getWeight();
                 }
                // else
                // {
                   //  RightWingQt = 1;
                 //}
-                _RightWingWeaponWeight = RightWingQt * WeaponList[0].getWeight();
+                _RightWingWeaponWeight = WeaponList[0].getWeight();
 
             }
             if (BtnBaySelected)
@@ -472,13 +505,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (BayWeapon != "Gravity")
                 {
                     BayWeapon = WeaponList[0].getName();
-                    BayQt = 1;
+                    BayQt = WeaponList[0].getWeight();
                 }
                 //else
                 //{
                    // BayQt = 1;
                // }
-                _BayWeaponWeight = BayQt * WeaponList[0].getWeight();
+                _BayWeaponWeight = WeaponList[0].getWeight();
             }
             UpdateTotalWeight();
         }
@@ -493,13 +526,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (LeftWingWeapon != "JASSM")
                 {
                     LeftWingWeapon = WeaponList[1].getName();
-                    LeftWingQt = 1;
+                    LeftWingQt = WeaponList[1].getWeight();
                 }
                 //else
                 //{
                 //    LeftWingQt += 1;
                 //}
-                _LeftWingWeaponWeight = LeftWingQt * WeaponList[1].getWeight();
+                _LeftWingWeaponWeight = WeaponList[1].getWeight();
             }
            
             if (BtnRightWingSelected)
@@ -507,13 +540,13 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (RightWingWeapon != "JASSM")
                 {
                     RightWingWeapon = WeaponList[1].getName();
-                    RightWingQt = 1;
+                    RightWingQt = WeaponList[1].getWeight();
                 }
                 //else
                 //{
                   //   RightWingQt += 1;
                 //}
-                _RightWingWeaponWeight = RightWingQt * WeaponList[1].getWeight();
+                _RightWingWeaponWeight =WeaponList[1].getWeight();
          
             }
             if (BtnBaySelected)
@@ -521,7 +554,7 @@ namespace Tinker_Weapons_Challenge.ViewModel
                 if (BayWeapon != "JASSM")
                 {
                     BayWeapon = WeaponList[1].getName();
-                    BayQt = 1;
+                    BayQt = WeaponList[1].getWeight();
                     
                 }
                 //else
@@ -529,7 +562,7 @@ namespace Tinker_Weapons_Challenge.ViewModel
                    // BayQt += 1;
                     
                 //}
-                _BayWeaponWeight = BayQt * WeaponList[1].getWeight();
+                _BayWeaponWeight = WeaponList[1].getWeight();
             }
             UpdateTotalWeight();
         }
@@ -552,7 +585,7 @@ namespace Tinker_Weapons_Challenge.ViewModel
         //Calculates/Updates Total Weight loaded of the plane for takeoff
         public void UpdateTotalWeight()
         {
-            TotalWeight =_LeftWingWeaponWeight + _RightWingWeaponWeight + _BayWeaponWeight + CraftList[0].getWeight();
+            TotalWeight =_LeftWingWeaponWeight + _RightWingWeaponWeight + _BayWeaponWeight + CraftList[0].getWeight() + _FuelFromTB;
             if(TotalWeight > 485000)
             {
                 MessageBoxResult warning = MessageBox.Show("EXCEEDS MAXIMUM WEIGHT!!!", "ALERT");
@@ -567,7 +600,7 @@ namespace Tinker_Weapons_Challenge.ViewModel
         //this can be commented if not running Unit Test
         public static int ReturnTotalWeight()
         {
-            int result = (CraftWeaponsDatabase.airCraftsList[0].getWeight() + (3 * CraftWeaponsDatabase.weaponList[0].getWeight())
+            int result = (CraftWeaponsDatabase.airCraftsList[0].getWeight() + ( CraftWeaponsDatabase.weaponList[0].getWeight())
                  + 150000 + CraftWeaponsDatabase.weaponList[6].getWeight() + 0);
             return result;
            
