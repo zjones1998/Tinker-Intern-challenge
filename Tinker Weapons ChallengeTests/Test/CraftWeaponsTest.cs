@@ -6,14 +6,23 @@ using Tinker_Weapons_Challenge.ViewModel;
 
 namespace Tinker_Weapons_Challenge.Model.Tests
 {
+
     [TestClass()]
     public class CraftWeaponsTests
     {
-        //Below two test is done by initializing and passing the object  
+        //This will initialize the classes to ensure they set up without crashing.
+        [TestMethod()]
+        public void SetUpTest()
+        {
+            AirCraft SetUpAircraft = new AirCraft();
+            AirWeapons SetUpAirWeapons = new AirWeapons();
+        }
+
+        //Below two tests will be run expanding on the above.
         [TestMethod()]
         public void AirCraftTest()
         {
-            //for AirCraft test by passing the object
+            //AirCraft class will be set up and information passed in to check the setup was correct.
             AirCraft aircraft = new AirCraft("B-52", 185000, 100000);           
             string actualAirCraft = aircraft.getName();
             string target = "B-52";
@@ -27,7 +36,7 @@ namespace Tinker_Weapons_Challenge.Model.Tests
 
         }           
 
-        //Testing class by instatiating
+        //This test will be of AirWeapons with instated data.
         [TestMethod()]
         public void WeaponsTest()
         {
@@ -43,9 +52,8 @@ namespace Tinker_Weapons_Challenge.Model.Tests
 
 
         /*
-        These test creates list of object which is the copy of the 
-        CraftWeaponsDatabase class and checks if they are accurately 
-        accessed when neede by the UserView Model class
+        These test creates a list of object which is a copy of the CraftWeaponsDatabase class 
+        and checks if they are correctly accessed by the UserView Model class
         */
         [TestMethod()]
         public void AirCraftListTest()        
@@ -79,28 +87,24 @@ namespace Tinker_Weapons_Challenge.Model.Tests
 
 
         /*
-            This Test demonstrate if the inteded weapon has been loaded to the 
-            right place of the Air Craft we wanted 
+            This test loads the plane and checks the weight is correct.
         */
         [TestMethod()]                  
         public void TotalWeaponLoadTest()
-        {
-            
-            int B52 = 185000;       //empty plane weigh
-            int LeftWingLoaded = 7988;  //Gravity weigh added to the Left Wing
-            int RightWingLoaded = 30194; //ALCM weigh added to the Right Wing
-            int BayLoaded = 0;
-            int FuelAdded = 150000;     //fuel weigh added to the plane
-            int LoadedPlaneWeight = B52 + LeftWingLoaded + RightWingLoaded + FuelAdded + BayLoaded;     //expected plane weigh ready to take off     
-
-            List<AirCraft> ListCraft = CraftWeaponsDatabase.ReturnCraftList();   // ReturnCraftList
-            List<AirWeapons> ListWeapon = CraftWeaponsDatabase.ReturnWeaponList();   // ReturnCraftList
+        { 
+            int B52 = 185000;           //empty plane weight
+            int LeftWingLoaded = 7988;  //Gravity weight added to the Left Wing
+            int RightWingLoaded = 30194; //ALCM weight added to the Right Wing
+            int BayLoaded = 0;          //Bay is left empty.
+            int FuelAdded = 150000;     //Add fuel to the plane.
+            //expected plane weight when loaded
+            int LoadedPlaneWeight = B52 + LeftWingLoaded + RightWingLoaded + FuelAdded + BayLoaded;  
+            //Return lists
+            List<AirCraft> ListCraft = CraftWeaponsDatabase.ReturnCraftList();
+            List<AirWeapons> ListWeapon = CraftWeaponsDatabase.ReturnWeaponList();
             int weighB52 =  UserViewModel.ReturnTotalWeight();
-
             Assert.AreEqual(LoadedPlaneWeight, weighB52, "result did not pass");
-
         }
-
 
         //This will check a value inside the range of the plane, and will require over 100,000 tons of fuel.
         [TestMethod]
@@ -109,7 +113,9 @@ namespace Tinker_Weapons_Challenge.Model.Tests
         {
             Fuel F = new Fuel();
             int distance = 2895;
+            //B-52's range.
             int range = 4825;
+            //B-52's max amount of fuel.
             int maxFuel = 300000;
             decimal FuelNeeded = F.fuel_calc(distance, range, maxFuel);
             decimal ExpectedFuel = 180000;
@@ -125,25 +131,10 @@ namespace Tinker_Weapons_Challenge.Model.Tests
             int range = 4825;
             int maxFuel = 300000;
             decimal FuelNeeded = F.fuel_calc(distance, range, maxFuel);
+            //This is the minimum amount of fuel the plane can have.
             decimal ExpectedFuel = 100000;
             Assert.AreEqual<decimal>(ExpectedFuel, FuelNeeded);
         }
-
-       
-
-        /*
-        [TestMethod]
-        public void TestMethod4()
-        {
-            int RWingTest = 5000;
-            int LWingTest = 5000;
-            int BTest = 5000;
-            int actualWeight = calcWeaponWeight(RWingTest, LWingTest, BTest);
-            expectedWeight = 15000;
-            Assert.AreEqual<int>(actualWeight, expectedWeight);
-        }
-        */
-
 
     }
   
