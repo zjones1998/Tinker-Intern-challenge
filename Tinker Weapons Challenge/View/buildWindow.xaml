@@ -131,9 +131,10 @@
         </StackPanel>
         <Slider x:Name="slider" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Button Content="Save" HorizontalAlignment="Left" Width="130" Margin="1352,0,0,755" Grid.Column="1" Height="24" VerticalAlignment="Bottom" Click="SaveButton"/>
-        <Button Content="Reset" HorizontalAlignment="Left" Width="130" Height="26"  VerticalAlignment="Bottom" Grid.Column="1" Margin="1352,0,0,648" Background="Red" Foreground="White" Click="ResetButton"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Width="130" Height="26" VerticalAlignment="Bottom" Grid.Column="1" Margin="1352,0,0,724" Click="ExitButton"/>
+        <Button Content="Reset" HorizontalAlignment="Left" Width="130" Height="26"  VerticalAlignment="Bottom" Grid.Column="1" Margin="1352,0,0,620" Background="Red" Foreground="White" Click="ResetButton"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Width="130" Height="26" VerticalAlignment="Bottom" Grid.Column="1" Margin="1352,0,0,661" Click="ExitButton"/>
         <Button Content="Home" HorizontalAlignment="Left" Width="130" Height="26" VerticalAlignment="Bottom" Grid.Column="1" Margin="1352,0,0,693" Click="HomeButton"/>
+        <Button Content="Save PDF" HorizontalAlignment="Left" Width="130" Height="26" VerticalAlignment="Bottom" Grid.Column="1" Margin="1352,0,0,724" Click="PDFSave"/>
 
     </Grid>
 </Window>

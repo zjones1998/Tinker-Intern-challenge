@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Windows;
 using Tinker_Weapons_Challenge.Model;
@@ -114,8 +115,49 @@ namespace Tinker_Weapons_Challenge
 			this.Close();
 		}
 
+		private void PDFSave(object sender, RoutedEventArgs e)
+		{
+			CaptureScreen();
+			string srcFilename = @"C:\\Users\\Zach\\Desktop\\ScreenCapture.png";
+			string dstFilename = @"SavePlane.pdf";
 
-		
+			iTextSharp.text.Rectangle pageSize = null;
+
+			using (var srcImage = new Bitmap(srcFilename))
+			{
+				pageSize = new iTextSharp.text.Rectangle(0, 0, srcImage.Width, srcImage.Height);
+			}
+			using (var ms = new MemoryStream())
+			{
+				var document = new iTextSharp.text.Document(pageSize, 0, 0, 0, 0);
+				iTextSharp.text.pdf.PdfWriter.GetInstance(document, ms).SetFullCompression();
+				document.Open();
+				var image = iTextSharp.text.Image.GetInstance(srcFilename);
+				document.Add(image);
+				document.Close();
+
+				File.WriteAllBytes(dstFilename, ms.ToArray());
+			}
+		}
+
+
+		private void CaptureScreen()
+		{
+			string filename = "ScreenCapture.png";
+
+			int screenLeft = (int)SystemParameters.VirtualScreenLeft;
+			int screenTop = (int)SystemParameters.VirtualScreenTop;
+			int screenWidth = (int)SystemParameters.VirtualScreenWidth;
+			int screenHeight = (int)SystemParameters.VirtualScreenHeight;
+
+			Bitmap screen = new Bitmap(screenWidth, screenHeight);
+			Graphics g = Graphics.FromImage(screen);
+
+			g.CopyFromScreen(screenLeft, screenTop, 0, 0, screen.Size);
+
+			screen.Save(@"C:\\Users\\Zach\\Desktop\\" + filename);
+		}
+
 	}
 
 }
